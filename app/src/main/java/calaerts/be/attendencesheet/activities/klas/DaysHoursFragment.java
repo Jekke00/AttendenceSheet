@@ -9,9 +9,7 @@ import android.view.ViewGroup;
 
 import calaerts.be.attendencesheet.R;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class DaysHoursFragment extends Fragment {
 
     @Override

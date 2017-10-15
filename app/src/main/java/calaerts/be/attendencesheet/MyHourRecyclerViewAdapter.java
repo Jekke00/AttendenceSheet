@@ -11,13 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import calaerts.be.attendencesheet.HourFragment.OnListFragmentInteractionListener;
-import calaerts.be.attendencesheet.dummy.DummyContent.DummyItem;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
- * specified {@link OnListFragmentInteractionListener}.
- * TODO: Replace the implementation with code for your data type.
- */
 public class MyHourRecyclerViewAdapter extends RecyclerView.Adapter<MyHourRecyclerViewAdapter.ViewHolder> {
 
     private List<Hour> hours = new ArrayList<>();
@@ -38,15 +32,13 @@ public class MyHourRecyclerViewAdapter extends RecyclerView.Adapter<MyHourRecycl
     public void onBindViewHolder(final ViewHolder holder, int position) {
         final Hour hour = hours.get(position);
         holder.mItem = hour;
-        holder.mIdView.setText(hour.getHour()+ "");
-        holder.checkBox.setSelected(hour.isSelected());
+        holder.checkBox.setText(Integer.toString(hour.getHour()));
+        holder.checkBox.setChecked(hour.isSelected());
 
-        holder.mView.setOnClickListener(new View.OnClickListener() {
+        holder.checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (null != mListener) {
-                    // Notify the active callbacks interface (the activity, if the
-                    // fragment is attached to one) that an item has been selected.
                     mListener.onListFragmentInteraction(holder.mItem);
                 }
             }

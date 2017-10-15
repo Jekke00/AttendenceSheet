@@ -76,7 +76,7 @@ public class KlasListViewModel extends ViewModel {
             public Day apply(List<Moment> moments) {
                 List<Hour> hours = dayOfWeek.getAvailableHours();
                 for(Moment moment : moments){
-                    hours.get(moment.getDayOfWeek().id).setSelected(true);
+                    hours.get(moment.getHour().getHour() - 1).setSelected(true);
                 }
                 return new Day(dayOfWeek, hours);
             }

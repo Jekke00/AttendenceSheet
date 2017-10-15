@@ -17,13 +17,6 @@ import calaerts.be.attendencesheet.AttendenceApp;
 import calaerts.be.attendencesheet.DayOfWeek;
 import calaerts.be.attendencesheet.KlasListViewModel;
 import calaerts.be.attendencesheet.R;
-
-/**
- * A fragment representing a list of Items.
- * <p/>
- * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
- * interface.
- */
 public class DayListFragment extends Fragment {
     @Inject
     KlasListViewModel klasViewModel;

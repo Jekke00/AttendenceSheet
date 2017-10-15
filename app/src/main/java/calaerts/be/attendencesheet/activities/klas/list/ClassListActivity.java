@@ -120,6 +120,10 @@ public class ClassListActivity extends AppCompatActivity implements KlasViewHold
         if(currentKlas != null && currentKlas.getId() == klas.getId()){
             return;
         }
+        alwaysChangeToKlas(klas);
+    }
+
+    private void alwaysChangeToKlas(Klas klas) {
         Bundle arguments = new Bundle();
         arguments.putInt(ClassDetailFragment.KLAS_ID, klas.getId());
         ClassDetailFragment fragment = new ClassDetailFragment();
@@ -146,7 +150,7 @@ public class ClassListActivity extends AppCompatActivity implements KlasViewHold
         if (student != null)
             changePaneToStudent(student);
         else
-            changePaneToKlas(klasViewModel.getSelectedKlas().getValue());
+            alwaysChangeToKlas(klasViewModel.getSelectedKlas().getValue());
     }
 
 

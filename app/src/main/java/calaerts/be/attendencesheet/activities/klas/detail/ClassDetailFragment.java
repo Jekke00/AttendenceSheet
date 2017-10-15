@@ -18,17 +18,10 @@ import calaerts.be.attendencesheet.AttendenceApp;
 import calaerts.be.attendencesheet.KlasListViewModel;
 import calaerts.be.attendencesheet.R;
 import calaerts.be.attendencesheet.activities.klas.DaysHoursFragment;
-import calaerts.be.attendencesheet.activities.klas.list.ClassListActivity;
 import calaerts.be.attendencesheet.activities.klas.student.StudentListFragment;
 import calaerts.be.attendencesheet.model.Klas;
 import calaerts.be.attendencesheet.repository.KlasRepository;
 
-/**
- * A fragment representing a single KlasDB detail screen.
- * This fragment is either contained in a {@link ClassListActivity}
- * in two-pane mode (on tablets) or a {@link ClassDetailActivity}
- * on handsets.
- */
 public class ClassDetailFragment extends Fragment {
     public static final String KLAS_ID = "klas_id";
     private Klas klas;

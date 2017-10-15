@@ -15,9 +15,6 @@ import calaerts.be.attendencesheet.AttendenceApp;
 import calaerts.be.attendencesheet.R;
 import calaerts.be.attendencesheet.model.KlasDB;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class NewKlas extends Fragment {
     private final KlasDB klas = new KlasDB();
     @Inject

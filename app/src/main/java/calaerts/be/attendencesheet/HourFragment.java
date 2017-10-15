@@ -1,7 +1,6 @@
 package calaerts.be.attendencesheet;
 
 import android.arch.lifecycle.Observer;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -19,8 +18,10 @@ import calaerts.be.attendencesheet.repository.MomentDao;
 
 
 public class HourFragment extends Fragment {
-    @Inject MomentDao momentDao;
-    @Inject KlasListViewModel klasViewModel;
+    @Inject
+    MomentDao momentDao;
+    @Inject
+    KlasListViewModel klasViewModel;
     private MyHourRecyclerViewAdapter adapter;
 
     @Override
@@ -32,41 +33,56 @@ public class HourFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_hour_list, container, false);
+        RecyclerView recyclerView = (RecyclerView) inflater.inflate(R.layout.fragment_hour_list, container, false);
 
-        // Set the adapter
-        if (view instanceof RecyclerView) {
-            Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
-            recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            adapter = new MyHourRecyclerViewAdapter(new OnListFragmentInteractionListener() {
-                @Override
-                public void onListFragmentInteraction(Hour item) {
-                    if (item.isSelected()) {
-                        momentDao.deleteMoment(klasViewModel.getSelectedKlas().getValue().getId(), klasViewModel.selectedDay().getValue().getDayOfWeek().id, item.getHour());
-                    } else {
-                        Moment moment = new Moment();
-                        moment.setKlasId(klasViewModel.getSelectedKlas().getValue().getId());
-                        moment.setHour(item);
-                        moment.setDayOfWeek(klasViewModel.selectedDay().getValue().getDayOfWeek());
-                        momentDao.insert(moment);
-                    }
-                }
-            });
-            recyclerView.setAdapter(adapter);
-            klasViewModel.selectedDay().observe(this, new Observer<Day>() {
-                @Override
-                public void onChanged(@Nullable Day day) {
-                    adapter.setHours(day.getHours());
-                }
-            });
+        setupRecyclerView(recyclerView);
+        klasViewModel.selectedDay().observe(this, new Observer<Day>() {
+            @Override
+            public void onChanged(@Nullable Day day) {
+                onDayUpdated(day);
+            }
+        });
 
+        return recyclerView;
+    }
+
+    private void onDayUpdated(@Nullable Day day) {
+        if (day != null)
+            adapter.setHours(day.getHours());
+    }
+
+    private void setupRecyclerView(RecyclerView recyclerView) {
+        recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
+        adapter = new MyHourRecyclerViewAdapter(new OnListFragmentInteractionListener() {
+            @Override
+            public void onListFragmentInteraction(Hour item) {
+                onHourClicked(item);
+            }
+        });
+        recyclerView.setAdapter(adapter);
+    }
+
+    private void onHourClicked(Hour item) {
+        if (item.isSelected()) {
+            deleteMoment(item);
+        } else {
+            addMoment(item);
         }
-        return view;
+    }
+
+    private void deleteMoment(Hour item) {
+        momentDao.deleteMoment(klasViewModel.getSelectedKlas().getValue().getId(), klasViewModel.selectedDay().getValue().getDayOfWeek().id, item.getHour());
+    }
+
+    private void addMoment(Hour item) {
+        Moment moment = new Moment();
+        moment.setKlasId(klasViewModel.getSelectedKlas().getValue().getId());
+        moment.setHour(item);
+        moment.setDayOfWeek(klasViewModel.selectedDay().getValue().getDayOfWeek());
+        momentDao.insert(moment);
     }
 
     public interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onListFragmentInteraction(Hour item);
     }
 }
