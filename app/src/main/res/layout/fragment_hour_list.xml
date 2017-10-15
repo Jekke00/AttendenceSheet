@@ -9,5 +9,5 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context="calaerts.be.attendencesheet.HourFragment"
+    tools:context="calaerts.be.attendencesheet.activities.klas.detail.hour.HourFragment"
     tools:listitem="@layout/fragment_hour" />

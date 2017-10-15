@@ -12,6 +12,8 @@ import android.support.annotation.Nullable;
 import java.util.List;
 
 import calaerts.be.attendencesheet.model.Day;
+import calaerts.be.attendencesheet.model.DayOfWeek;
+import calaerts.be.attendencesheet.model.Hour;
 import calaerts.be.attendencesheet.model.Klas;
 import calaerts.be.attendencesheet.model.KlasDB;
 import calaerts.be.attendencesheet.model.Moment;
@@ -39,6 +41,10 @@ public class KlasListViewModel extends ViewModel {
         return klasRepository.getAllKlassen();
     }
 
+    public LiveData<Klas> getSelectedKlas() {
+        return selectedKlasLiveData;
+    }
+
     public void setSelectedKlas(int klasId) {
         if (currentLiveDataOfKlas != null)
             selectedKlasLiveData.removeSource(currentLiveDataOfKlas);
@@ -49,10 +55,6 @@ public class KlasListViewModel extends ViewModel {
                 selectedKlasLiveData.setValue(klas);
             }
         });
-    }
-
-    public LiveData<Klas> getSelectedKlas() {
-        return selectedKlasLiveData;
     }
 
     public LiveData<Student> selectedStudent() {

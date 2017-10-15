@@ -1,4 +1,4 @@
-package calaerts.be.attendencesheet;
+package calaerts.be.attendencesheet.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,21 +20,6 @@ public enum DayOfWeek {
         this.value = value;
     }
 
-    public List<Hour> getAvailableHours(){
-        if(WEDNESDAY.equals(this)){
-            return getHours(4);
-        }
-        return getHours(7);
-    }
-
-    private List<Hour> getHours(int maxHour) {
-        List<Hour> hours = new ArrayList<>();
-        for (int i = 1; i <= maxHour; i++) {
-            hours.add(new Hour(i));
-        }
-        return hours;
-    }
-
     public static DayOfWeek getDayById(int id){
         switch (id){
             case 0:
@@ -54,6 +39,21 @@ public enum DayOfWeek {
             default:
                 throw new IllegalArgumentException("unkown day code");
         }
+    }
+
+    public List<Hour> getAvailableHours() {
+        if (WEDNESDAY.equals(this)) {
+            return getHours(4);
+        }
+        return getHours(7);
+    }
+
+    private List<Hour> getHours(int maxHour) {
+        List<Hour> hours = new ArrayList<>();
+        for (int i = 1; i <= maxHour; i++) {
+            hours.add(new Hour(i));
+        }
+        return hours;
     }
 
     @Override

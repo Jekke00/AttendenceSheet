@@ -14,9 +14,9 @@ import java.util.Arrays;
 import javax.inject.Inject;
 
 import calaerts.be.attendencesheet.AttendenceApp;
-import calaerts.be.attendencesheet.DayOfWeek;
 import calaerts.be.attendencesheet.KlasListViewModel;
 import calaerts.be.attendencesheet.R;
+import calaerts.be.attendencesheet.model.DayOfWeek;
 public class DayListFragment extends Fragment {
     @Inject
     KlasListViewModel klasViewModel;

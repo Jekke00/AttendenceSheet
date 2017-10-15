@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import calaerts.be.attendencesheet.model.Day;
+import calaerts.be.attendencesheet.model.DayOfWeek;
+import calaerts.be.attendencesheet.model.Hour;
 import calaerts.be.attendencesheet.model.Klas;
 import calaerts.be.attendencesheet.model.Moment;
 import calaerts.be.attendencesheet.model.Student;

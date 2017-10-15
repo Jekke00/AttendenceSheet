@@ -2,6 +2,9 @@ package calaerts.be.attendencesheet;
 
 import android.arch.persistence.room.TypeConverter;
 
+import calaerts.be.attendencesheet.model.DayOfWeek;
+import calaerts.be.attendencesheet.model.Hour;
+
 public class Converters {
     @TypeConverter
     public static DayOfWeek dayOfWeek(int dayOfWeek){

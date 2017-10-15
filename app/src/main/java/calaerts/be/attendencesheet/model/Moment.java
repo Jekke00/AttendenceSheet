@@ -8,8 +8,6 @@ import android.arch.persistence.room.TypeConverters;
 import android.support.annotation.NonNull;
 
 import calaerts.be.attendencesheet.Converters;
-import calaerts.be.attendencesheet.DayOfWeek;
-import calaerts.be.attendencesheet.Hour;
 
 @Entity(foreignKeys = @ForeignKey(entity = KlasDB.class, parentColumns = "id", childColumns = "klasId"), indices = {@Index(value = "klasId")})
 @TypeConverters(Converters.class)

@@ -14,9 +14,9 @@
         />
     <fragment
         android:id="@+id/hoursListFragment"
-        android:name="calaerts.be.attendencesheet.HourFragment"
-        android:layout_weight="1"
+        android:name="calaerts.be.attendencesheet.activities.klas.detail.hour.HourFragment"
         android:layout_width="0dp"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
 
 </LinearLayout>

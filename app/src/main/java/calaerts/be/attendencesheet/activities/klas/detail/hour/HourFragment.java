@@ -1,4 +1,4 @@
-package calaerts.be.attendencesheet;
+package calaerts.be.attendencesheet.activities.klas.detail.hour;
 
 import android.arch.lifecycle.Observer;
 import android.os.Bundle;
@@ -14,7 +14,11 @@ import java.util.ArrayList;
 
 import javax.inject.Inject;
 
+import calaerts.be.attendencesheet.AttendenceApp;
+import calaerts.be.attendencesheet.KlasListViewModel;
+import calaerts.be.attendencesheet.R;
 import calaerts.be.attendencesheet.model.Day;
+import calaerts.be.attendencesheet.model.Hour;
 import calaerts.be.attendencesheet.model.Klas;
 import calaerts.be.attendencesheet.model.Moment;
 import calaerts.be.attendencesheet.repository.MomentDao;

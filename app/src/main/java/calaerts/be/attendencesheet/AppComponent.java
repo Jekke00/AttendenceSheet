@@ -4,6 +4,7 @@ import javax.inject.Singleton;
 
 import calaerts.be.attendencesheet.activities.klas.DayListFragment;
 import calaerts.be.attendencesheet.activities.klas.detail.ClassDetailFragment;
+import calaerts.be.attendencesheet.activities.klas.detail.hour.HourFragment;
 import calaerts.be.attendencesheet.activities.klas.list.ClassListActivity;
 import calaerts.be.attendencesheet.activities.klas.newKlas.NewKlas;
 import calaerts.be.attendencesheet.activities.klas.newKlas.NewKlasActivity;

@@ -1,4 +1,4 @@
-package calaerts.be.attendencesheet;
+package calaerts.be.attendencesheet.model;
 
 public class Hour {
     private final int hour;

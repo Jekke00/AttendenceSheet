@@ -9,7 +9,7 @@ import android.arch.persistence.room.TypeConverters;
 import java.util.List;
 
 import calaerts.be.attendencesheet.Converters;
-import calaerts.be.attendencesheet.DayOfWeek;
+import calaerts.be.attendencesheet.model.DayOfWeek;
 import calaerts.be.attendencesheet.model.Moment;
 
 @Dao

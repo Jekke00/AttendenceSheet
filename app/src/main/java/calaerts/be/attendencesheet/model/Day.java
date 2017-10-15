@@ -2,9 +2,6 @@ package calaerts.be.attendencesheet.model;
 
 import java.util.List;
 
-import calaerts.be.attendencesheet.DayOfWeek;
-import calaerts.be.attendencesheet.Hour;
-
 public class Day {
     private final DayOfWeek dayOfWeek;
     private final List<Hour> hours;

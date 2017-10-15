@@ -9,15 +9,14 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import calaerts.be.attendencesheet.DayOfWeek;
 import calaerts.be.attendencesheet.R;
 import calaerts.be.attendencesheet.activities.klas.DayListFragment.OnListFragmentInteractionListener;
-import calaerts.be.attendencesheet.model.Day;
+import calaerts.be.attendencesheet.model.DayOfWeek;
 
 public class DaysRecyclerViewAdapter extends RecyclerView.Adapter<DaysRecyclerViewAdapter.ViewHolder> {
 
-    private List<DayOfWeek> days = new ArrayList<>();
     private final OnListFragmentInteractionListener mListener;
+    private List<DayOfWeek> days = new ArrayList<>();
 
     public DaysRecyclerViewAdapter( OnListFragmentInteractionListener listener) {
         mListener = listener;
@@ -53,6 +52,11 @@ public class DaysRecyclerViewAdapter extends RecyclerView.Adapter<DaysRecyclerVi
         return days.size();
     }
 
+    public void setDays(List<DayOfWeek> days) {
+        this.days = days;
+        notifyDataSetChanged();
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView mIdView;
@@ -70,10 +74,5 @@ public class DaysRecyclerViewAdapter extends RecyclerView.Adapter<DaysRecyclerVi
         public String toString() {
             return super.toString() + " '" + mContentView.getText() + "'";
         }
-    }
-
-    public void setDays(List<DayOfWeek> days) {
-        this.days = days;
-        notifyDataSetChanged();
     }
 }
