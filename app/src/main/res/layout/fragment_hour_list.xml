@@ -10,5 +10,4 @@
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
     tools:context="calaerts.be.attendencesheet.HourFragment"
-    tools:listitem="@layout/fragment_hour"
-    android:background="@color/colorPrimaryDark"/>
+    tools:listitem="@layout/fragment_hour" />

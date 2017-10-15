@@ -11,4 +11,4 @@
     app:layoutManager="LinearLayoutManager"
     tools:context="calaerts.be.attendencesheet.activities.klas.DayListFragment"
     tools:listitem="@layout/fragment_day"
-    android:background="@color/colorAccent"/>
+    />

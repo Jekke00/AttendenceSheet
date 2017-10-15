@@ -117,7 +117,7 @@ public class ClassListActivity extends AppCompatActivity implements KlasViewHold
     }
 
     private void changePaneToKlas(Klas klas) {
-        if(currentKlas != null && currentKlas.getId() == klas.getId()){
+        if (currentKlas != null && currentKlas.getId() == klas.getId()) {
             return;
         }
         alwaysChangeToKlas(klas);

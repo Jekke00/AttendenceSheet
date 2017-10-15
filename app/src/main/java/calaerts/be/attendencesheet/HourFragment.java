@@ -10,9 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+
 import javax.inject.Inject;
 
 import calaerts.be.attendencesheet.model.Day;
+import calaerts.be.attendencesheet.model.Klas;
 import calaerts.be.attendencesheet.model.Moment;
 import calaerts.be.attendencesheet.repository.MomentDao;
 
@@ -42,8 +45,18 @@ public class HourFragment extends Fragment {
                 onDayUpdated(day);
             }
         });
+        klasViewModel.getSelectedKlas().observe(this, new Observer<Klas>() {
+            @Override
+            public void onChanged(@Nullable Klas klas) {
+                clearHours();
+            }
+        });
 
         return recyclerView;
+    }
+
+    private void clearHours() {
+        adapter.setHours(new ArrayList<Hour>());
     }
 
     private void onDayUpdated(@Nullable Day day) {
