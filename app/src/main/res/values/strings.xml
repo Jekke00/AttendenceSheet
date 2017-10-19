@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AttendenceSheet</string>
+    <string name="app_name">attendancesheet</string>
     <string name="title_class_detail">Class Detail</string>
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -10,4 +10,8 @@
     <string name="create">create</string>
     <string name="name">Name</string>
     <string name="title_activity_new_klas">NewKlasActivity</string>
+    <string name="manage_classes">Manage Classes</string>
+    <string name="enter_attendence">Enter attendance</string>
+    <string name="title_activity_enter_attendance">EnterAttendanceActivity</string>
+    <string name="save">save</string>
 </resources>

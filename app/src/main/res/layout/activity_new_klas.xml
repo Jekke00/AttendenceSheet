@@ -6,7 +6,7 @@
               android:layout_height="wrap_content"
               android:orientation="vertical"
               app:layout_behavior="@string/appbar_scrolling_view_behavior"
-              tools:context="calaerts.be.attendencesheet.activities.klas.newKlas.NewKlasActivity"
+    tools:context="calaerts.be.attendancesheet.activities.klas.newKlas.NewKlasActivity"
               tools:showIn="@layout/activity_new_klas">
 
     <TextView
@@ -23,8 +23,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/name"/>
+        android:hint="@string/name"
+        android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/create_class"

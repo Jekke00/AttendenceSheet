@@ -2,19 +2,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:baselineAligned="false"
     android:orientation="horizontal"
-    tools:context="calaerts.be.attendencesheet.activities.klas.DaysHoursFragment">
+    tools:context="calaerts.be.attendancesheet.activities.klas.detail.day.DaysHoursFragment">
 
     <fragment
         android:id="@+id/daysListFragment"
-        android:name="calaerts.be.attendencesheet.activities.klas.DayListFragment"
+        android:name="calaerts.be.attendancesheet.activities.klas.detail.day.DayListFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         />
     <fragment
         android:id="@+id/hoursListFragment"
-        android:name="calaerts.be.attendencesheet.activities.klas.detail.hour.HourFragment"
+        android:name="calaerts.be.attendancesheet.activities.klas.detail.hour.HourFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1" />

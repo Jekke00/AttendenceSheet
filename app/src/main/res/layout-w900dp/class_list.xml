@@ -9,7 +9,7 @@
               android:divider="?android:attr/dividerHorizontal"
               android:orientation="horizontal"
               android:showDividers="middle"
-              tools:context="calaerts.be.attendencesheet.activities.klas.list.ClassListActivity">
+    tools:context="calaerts.be.attendancesheet.activities.klas.list.KlasListActivity">
 
     <!--
     This layout is a two-pane layout for the Classes
@@ -17,16 +17,16 @@
     
     -->
 
-    <android.support.v7.widget.RecyclerView android:id="@+id/class_list"
-                                            android:name="calaerts.be.attendencesheet.ClassListFragment"
-                                            xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
                                             xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/class_list"
+        android:name="calaerts.be.attendancesheet.ClassListFragment"
                                             android:layout_width="@dimen/item_width"
                                             android:layout_height="match_parent"
                                             android:layout_marginLeft="16dp"
                                             android:layout_marginRight="16dp"
                                             app:layoutManager="LinearLayoutManager"
-                                            tools:context="calaerts.be.attendencesheet.activities.klas.list.ClassListActivity"
+        tools:context="calaerts.be.attendancesheet.activities.klas.list.KlasListActivity"
                                             tools:listitem="@layout/class_list_content"/>
 
     <FrameLayout

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="calaerts.be.attendencesheet.activities.klas.student.StudentDetail">
+    tools:context="calaerts.be.attendancesheet.activities.klas.student.StudentDetail">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -12,12 +12,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name" />
+        android:hint="@string/name"
+        android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/saveStudentButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="save" />
+        android:text="@string/save" />
 </LinearLayout>
