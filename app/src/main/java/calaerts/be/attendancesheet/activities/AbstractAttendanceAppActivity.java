@@ -28,7 +28,8 @@ abstract public class AbstractAttendanceAppActivity extends AppCompatActivity {
     private void setupToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle(getTitle());
+        if (toolbar != null)
+            toolbar.setTitle(getTitle());
 
 
     }

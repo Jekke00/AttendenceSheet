@@ -5,7 +5,7 @@ import android.view.View;
 
 import calaerts.be.attendancesheet.model.Hour;
 
-abstract class HourViewHolder extends RecyclerView.ViewHolder {
+public abstract class HourViewHolder extends RecyclerView.ViewHolder {
     public HourViewHolder(View itemView) {
         super(itemView);
     }

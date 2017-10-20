@@ -1,5 +1,6 @@
 package calaerts.be.attendancesheet.activities.klas.detail.hour;
 
+import android.arch.core.util.Function;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -31,12 +32,13 @@ public abstract class AbstractHourFragment extends Fragment {
 
     private void setupRecyclerView(RecyclerView recyclerView) {
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
-        setAdapter(new HourRecyclerViewAdapter(new OnHourListInteraction() {
+        adapter = adapterFactory().apply(new OnHourListInteraction() {
             @Override
             public void onListFragmentInteraction(Hour item) {
                 onHourClicked(item);
             }
-        }));
+        });
+
         recyclerView.setAdapter(getAdapter());
     }
 
@@ -46,7 +48,5 @@ public abstract class AbstractHourFragment extends Fragment {
         return adapter;
     }
 
-    private void setAdapter(AbstractHourRecyclerViewAdapter adapter) {
-        this.adapter = adapter;
-    }
+    abstract protected Function<OnHourListInteraction, ? extends AbstractHourRecyclerViewAdapter> adapterFactory();
 }

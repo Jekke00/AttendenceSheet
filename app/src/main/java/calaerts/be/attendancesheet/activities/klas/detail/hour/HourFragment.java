@@ -1,5 +1,6 @@
 package calaerts.be.attendancesheet.activities.klas.detail.hour;
 
+import android.arch.core.util.Function;
 import android.arch.lifecycle.Observer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -74,4 +75,13 @@ public class HourFragment extends AbstractHourFragment {
         momentDao.insert(moment);
     }
 
+    @Override
+    protected Function<OnHourListInteraction, ? extends AbstractHourRecyclerViewAdapter> adapterFactory() {
+        return new Function<OnHourListInteraction, AbstractHourRecyclerViewAdapter>() {
+            @Override
+            public AbstractHourRecyclerViewAdapter apply(OnHourListInteraction onHourListInteraction) {
+                return new ManageHourRecyclerViewAdapter(onHourListInteraction);
+            }
+        };
+    }
 }

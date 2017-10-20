@@ -6,9 +6,9 @@ import android.view.ViewGroup;
 
 import calaerts.be.attendancesheet.R;
 
-public class HourRecyclerViewAdapter extends AbstractHourRecyclerViewAdapter<HourViewHolder> {
+public class ManageHourRecyclerViewAdapter extends AbstractHourRecyclerViewAdapter<HourViewHolder> {
 
-    public HourRecyclerViewAdapter(OnHourListInteraction listener) {
+    public ManageHourRecyclerViewAdapter(OnHourListInteraction listener) {
         super(listener);
     }
 

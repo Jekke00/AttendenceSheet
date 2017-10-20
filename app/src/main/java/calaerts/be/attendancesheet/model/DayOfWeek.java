@@ -25,19 +25,19 @@ public enum DayOfWeek {
 
     public static DayOfWeek getDayById(int id){
         switch (id){
-            case 0:
-                return SUNDAY;
             case 1:
-                return MONDAY;
+                return SUNDAY;
             case 2:
-                return TUESDAY;
+                return MONDAY;
             case 3:
-                return WEDNESDAY;
+                return TUESDAY;
             case 4:
-                return THURSDAY;
+                return WEDNESDAY;
             case 5:
-                return FRIDAY;
+                return THURSDAY;
             case 6:
+                return FRIDAY;
+            case 7:
                 return SATURDAY;
             default:
                 throw new IllegalArgumentException("unkown day code");

@@ -12,7 +12,7 @@
     tools:showIn="@layout/activity_enter_attendance">
     <fragment
         android:id="@+id/attendanceHour"
-        android:name="calaerts.be.attendancesheet.activities.attendance.AttendanceHourList"
+        android:name="calaerts.be.attendancesheet.activities.attendance.hour.AttendanceHourList"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"/>

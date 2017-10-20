@@ -2,8 +2,8 @@ package calaerts.be.attendancesheet;
 
 import javax.inject.Singleton;
 
-import calaerts.be.attendancesheet.activities.attendance.AttendanceHourList;
 import calaerts.be.attendancesheet.activities.attendance.EnterAttendanceActivity;
+import calaerts.be.attendancesheet.activities.attendance.hour.AttendanceHourList;
 import calaerts.be.attendancesheet.activities.klas.detail.ClassDetailFragment;
 import calaerts.be.attendancesheet.activities.klas.detail.day.DayListFragment;
 import calaerts.be.attendancesheet.activities.klas.detail.hour.HourFragment;

@@ -7,11 +7,11 @@ import java.util.List;
 
 import calaerts.be.attendancesheet.model.Hour;
 
-abstract class AbstractHourRecyclerViewAdapter<T extends HourViewHolder> extends RecyclerView.Adapter<T> {
+public abstract class AbstractHourRecyclerViewAdapter<T extends HourViewHolder> extends RecyclerView.Adapter<T> {
     private final OnHourListInteraction mListener;
     private List<Hour> hours = new ArrayList<>();
 
-    AbstractHourRecyclerViewAdapter(OnHourListInteraction listener) {
+    public AbstractHourRecyclerViewAdapter(OnHourListInteraction listener) {
         mListener = listener;
     }
 
@@ -24,7 +24,7 @@ abstract class AbstractHourRecyclerViewAdapter<T extends HourViewHolder> extends
         return hours;
     }
 
-    void setHours(List<Hour> hours) {
+    public void setHours(List<Hour> hours) {
         this.hours = hours;
         notifyDataSetChanged();
     }
