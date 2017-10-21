@@ -24,12 +24,10 @@ public class AttendanceViewModel extends ViewModel {
     private LiveData<List<Student>> currentStudentLiveData;
     private DayOfWeek selectedDayOfWeek;
 
-
     public AttendanceViewModel(StudentDao studentDao, MomentDao momentDao) {
         this.studentDao = studentDao;
         this.momentDao = momentDao;
     }
-
 
     public LiveData<List<Hour>> getUsedHours() {
         return availableHourAtDayMediator;
@@ -64,4 +62,6 @@ public class AttendanceViewModel extends ViewModel {
             });
         }
     }
+
+
 }

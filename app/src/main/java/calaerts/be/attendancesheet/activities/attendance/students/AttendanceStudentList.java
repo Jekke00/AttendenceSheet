@@ -1,7 +1,6 @@
-package calaerts.be.attendancesheet.activities.klas.student;
+package calaerts.be.attendancesheet.activities.attendance.students;
 
 import android.arch.core.util.Function;
-import android.arch.lifecycle.Observer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -9,17 +8,18 @@ import android.view.View;
 import javax.inject.Inject;
 
 import calaerts.be.attendancesheet.AttendanceApp;
-import calaerts.be.attendancesheet.activities.klas.KlasListViewModel;
-import calaerts.be.attendancesheet.model.Klas;
+import calaerts.be.attendancesheet.activities.attendance.AttendanceViewModel;
+import calaerts.be.attendancesheet.activities.klas.student.AbstractStudentListFragment;
+import calaerts.be.attendancesheet.activities.klas.student.AbstractStudentRecyclerViewAdapter;
+import calaerts.be.attendancesheet.activities.klas.student.StudentInteractionListener;
 import calaerts.be.attendancesheet.model.Student;
 
-public class StudentListFragment extends AbstractStudentListFragment {
-
+public class AttendanceStudentList extends AbstractStudentListFragment {
     @Inject
-    KlasListViewModel klasViewModel;
+    AttendanceViewModel attendanceViewModel;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ((AttendanceApp) getActivity().getApplication()).getAppComponent().inject(this);
     }
@@ -27,16 +27,12 @@ public class StudentListFragment extends AbstractStudentListFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        klasViewModel.getSelectedKlas().observe(this, new Observer<Klas>() {
-            @Override
-            public void onChanged(@Nullable Klas klas) {
-                onKlasUpdated(klas);
-            }
-        });
+
     }
 
-    private void onKlasUpdated(Klas klas) {
-        setStudents(klas.getStudents());
+    @Override
+    public void onStudentSelected(Student student) {
+
     }
 
     @Override
@@ -44,15 +40,8 @@ public class StudentListFragment extends AbstractStudentListFragment {
         return new Function<StudentInteractionListener, AbstractStudentRecyclerViewAdapter>() {
             @Override
             public AbstractStudentRecyclerViewAdapter apply(StudentInteractionListener studentInteractionListener) {
-                return new MyStudentRecyclerViewAdapter(studentInteractionListener);
+                return null;
             }
         };
     }
-
-    @Override
-    public void onStudentSelected(Student student) {
-        klasViewModel.selectStudent(student);
-    }
-
-
 }

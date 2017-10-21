@@ -16,7 +16,7 @@ import calaerts.be.attendancesheet.AttendanceApp;
 import calaerts.be.attendancesheet.R;
 import calaerts.be.attendancesheet.activities.klas.KlasListViewModel;
 import calaerts.be.attendancesheet.activities.klas.detail.day.DaysHoursFragment;
-import calaerts.be.attendancesheet.activities.klas.student.StudentListFragment;
+import calaerts.be.attendancesheet.activities.klas.student.StudentListContainer;
 import calaerts.be.attendancesheet.repository.KlasRepository;
 
 public class ClassDetailFragment extends Fragment {
@@ -52,7 +52,7 @@ public class ClassDetailFragment extends Fragment {
             public Fragment getItem(int i) {
                 switch (i) {
                     case 0:
-                        return new StudentListFragment();
+                        return new StudentListContainer();
                     case 1:
                         return new DaysHoursFragment();
                 }
