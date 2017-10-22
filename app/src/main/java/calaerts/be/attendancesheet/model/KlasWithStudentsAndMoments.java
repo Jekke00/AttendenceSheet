@@ -9,8 +9,8 @@ public class KlasWithStudentsAndMoments {
     @Embedded
     public KlasDB klas;
 
-    @Relation(parentColumn = "id", entityColumn = "klasId", entity = Student.class)
-    public List<Student> students;
+    @Relation(parentColumn = "id", entityColumn = "klasId", entity = StudentDb.class)
+    public List<StudentDb> students;
 
     @Relation(parentColumn = "id", entityColumn = "klasId", entity = Moment.class)
     public List<Moment> moments;

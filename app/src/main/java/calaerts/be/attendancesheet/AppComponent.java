@@ -5,6 +5,7 @@ import javax.inject.Singleton;
 import calaerts.be.attendancesheet.activities.attendance.EnterAttendanceActivity;
 import calaerts.be.attendancesheet.activities.attendance.hour.AttendanceHourList;
 import calaerts.be.attendancesheet.activities.attendance.students.AttendanceStudentList;
+import calaerts.be.attendancesheet.activities.attendance.students.StudentFragment;
 import calaerts.be.attendancesheet.activities.klas.detail.ClassDetailFragment;
 import calaerts.be.attendancesheet.activities.klas.detail.day.DayListFragment;
 import calaerts.be.attendancesheet.activities.klas.detail.hour.HourFragment;
@@ -42,4 +43,6 @@ public interface AppComponent {
     void inject(StudentListContainer studentListContainer);
 
     void inject(AttendanceStudentList attendanceStudentList);
+
+    void inject(StudentFragment studentFragment);
 }

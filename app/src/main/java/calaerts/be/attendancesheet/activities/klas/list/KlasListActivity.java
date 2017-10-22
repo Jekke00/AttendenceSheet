@@ -22,7 +22,7 @@ import calaerts.be.attendancesheet.activities.klas.newKlas.NewKlasActivity;
 import calaerts.be.attendancesheet.activities.klas.student.StudentDetail;
 import calaerts.be.attendancesheet.model.Klas;
 import calaerts.be.attendancesheet.model.KlasDB;
-import calaerts.be.attendancesheet.model.Student;
+import calaerts.be.attendancesheet.model.StudentDb;
 
 public class KlasListActivity extends AbstractAttendanceAppActivity implements KlasViewHolderListener {
     @Inject
@@ -48,9 +48,9 @@ public class KlasListActivity extends AbstractAttendanceAppActivity implements K
                 klasChanged(klas);
             }
         });
-        klasViewModel.selectedStudent().observe(this, new Observer<Student>() {
+        klasViewModel.selectedStudent().observe(this, new Observer<StudentDb>() {
             @Override
-            public void onChanged(@Nullable Student student) {
+            public void onChanged(@Nullable StudentDb student) {
                 onStudentSelected(student);
             }
         });
@@ -130,7 +130,7 @@ public class KlasListActivity extends AbstractAttendanceAppActivity implements K
         currentKlas = klas;
     }
 
-    private void changePaneToStudent(Student student) {
+    private void changePaneToStudent(StudentDb student) {
         StudentDetail fragment = new StudentDetail();
         Bundle arguments = new Bundle();
         fragment.setArguments(arguments);
@@ -141,7 +141,7 @@ public class KlasListActivity extends AbstractAttendanceAppActivity implements K
                 .commit();
     }
 
-    private void onStudentSelected(@Nullable Student student) {
+    private void onStudentSelected(@Nullable StudentDb student) {
         if (student != null)
             changePaneToStudent(student);
         else

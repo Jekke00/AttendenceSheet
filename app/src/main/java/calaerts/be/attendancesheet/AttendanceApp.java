@@ -4,6 +4,8 @@ import android.app.Application;
 
 import com.facebook.stetho.Stetho;
 
+import net.danlew.android.joda.JodaTimeAndroid;
+
 public class AttendanceApp extends Application {
     private AppComponent appComponent;
 
@@ -14,6 +16,7 @@ public class AttendanceApp extends Application {
                 .appModule(new AppModule(this))
                 .build();
         Stetho.initializeWithDefaults(this);
+        JodaTimeAndroid.init(this);
     }
 
     public AppComponent getAppComponent() {

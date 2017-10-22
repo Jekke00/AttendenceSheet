@@ -15,7 +15,7 @@ import calaerts.be.attendancesheet.AttendanceApp;
 import calaerts.be.attendancesheet.R;
 import calaerts.be.attendancesheet.activities.klas.KlasListViewModel;
 import calaerts.be.attendancesheet.model.Klas;
-import calaerts.be.attendancesheet.model.Student;
+import calaerts.be.attendancesheet.model.StudentDb;
 
 
 public class StudentListContainer extends Fragment {
@@ -63,7 +63,7 @@ public class StudentListContainer extends Fragment {
     }
 
     public void onNewStudentClicked() {
-        Student student = new Student();
+        StudentDb student = new StudentDb();
         student.setKlasId(klas.getId());
         klasViewModel.selectStudent(student);
     }

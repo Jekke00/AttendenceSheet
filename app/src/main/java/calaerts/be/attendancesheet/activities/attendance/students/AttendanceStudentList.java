@@ -12,7 +12,7 @@ import calaerts.be.attendancesheet.activities.attendance.AttendanceViewModel;
 import calaerts.be.attendancesheet.activities.klas.student.AbstractStudentListFragment;
 import calaerts.be.attendancesheet.activities.klas.student.AbstractStudentRecyclerViewAdapter;
 import calaerts.be.attendancesheet.activities.klas.student.StudentInteractionListener;
-import calaerts.be.attendancesheet.model.Student;
+import calaerts.be.attendancesheet.model.StudentDb;
 
 public class AttendanceStudentList extends AbstractStudentListFragment {
     @Inject
@@ -31,7 +31,7 @@ public class AttendanceStudentList extends AbstractStudentListFragment {
     }
 
     @Override
-    public void onStudentSelected(Student student) {
+    public void onStudentSelected(StudentDb student) {
 
     }
 

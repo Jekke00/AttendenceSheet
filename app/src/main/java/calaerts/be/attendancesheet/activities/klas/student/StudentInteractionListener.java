@@ -1,7 +1,7 @@
 package calaerts.be.attendancesheet.activities.klas.student;
 
-import calaerts.be.attendancesheet.model.Student;
+import calaerts.be.attendancesheet.model.StudentDb;
 
 public interface StudentInteractionListener {
-    void onStudentSelected(Student student);
+    void onStudentSelected(StudentDb student);
 }

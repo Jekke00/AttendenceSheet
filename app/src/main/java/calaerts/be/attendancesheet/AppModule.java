@@ -8,6 +8,7 @@ import calaerts.be.attendancesheet.activities.attendance.AttendanceViewModel;
 import calaerts.be.attendancesheet.activities.klas.KlasListViewModel;
 import calaerts.be.attendancesheet.repository.KlasDao;
 import calaerts.be.attendancesheet.repository.KlasRepository;
+import calaerts.be.attendancesheet.repository.MissedAttendanceDao;
 import calaerts.be.attendancesheet.repository.MomentDao;
 import calaerts.be.attendancesheet.repository.StudentDao;
 import dagger.Module;
@@ -36,7 +37,7 @@ public class AppModule {
     @Provides
     @Singleton
     public AppDatabase appDatabase() {
-        return AppDatabase.getInMemoryDatabase(providesApplication());
+        return AppDatabase.getDatabase(providesApplication());
     }
 
     @Provides
@@ -55,6 +56,12 @@ public class AppModule {
     @Singleton
     public MomentDao momentDao() {
         return appDatabase().momentDao();
+    }
+
+    @Provides
+    @Singleton
+    public MissedAttendanceDao missedAttendanceDao() {
+        return appDatabase().missedAttendanceDao();
     }
 
     @Provides

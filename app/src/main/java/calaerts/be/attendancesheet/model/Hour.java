@@ -1,7 +1,10 @@
 package calaerts.be.attendancesheet.model;
 
+import android.arch.persistence.room.Ignore;
+
 public class Hour {
     private final int hour;
+    @Ignore
     private boolean selected;
 
     public Hour(int hour) {

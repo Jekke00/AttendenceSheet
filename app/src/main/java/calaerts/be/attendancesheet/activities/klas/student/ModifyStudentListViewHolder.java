@@ -5,12 +5,12 @@ import android.view.View;
 import android.widget.TextView;
 
 import calaerts.be.attendancesheet.R;
-import calaerts.be.attendancesheet.model.Student;
+import calaerts.be.attendancesheet.model.StudentDb;
 
 public class ModifyStudentListViewHolder extends RecyclerView.ViewHolder {
     public final View mainView;
     public final TextView contentView;
-    public Student mItem;
+    public StudentDb mItem;
 
     public ModifyStudentListViewHolder(View view) {
         super(view);
@@ -18,7 +18,7 @@ public class ModifyStudentListViewHolder extends RecyclerView.ViewHolder {
         contentView = view.findViewById(R.id.content);
     }
 
-    public void setStudent(final Student student, final StudentInteractionListener studentInteractionListener) {
+    public void setStudent(final StudentDb student, final StudentInteractionListener studentInteractionListener) {
         this.contentView.setText(student.getName());
         this.mainView.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -6,15 +6,19 @@ import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
 import calaerts.be.attendancesheet.model.KlasDB;
+import calaerts.be.attendancesheet.model.MissedAttendance;
 import calaerts.be.attendancesheet.model.Moment;
-import calaerts.be.attendancesheet.model.Student;
+import calaerts.be.attendancesheet.model.StudentDb;
+import calaerts.be.attendancesheet.repository.KlasDao;
+import calaerts.be.attendancesheet.repository.MissedAttendanceDao;
 import calaerts.be.attendancesheet.repository.MomentDao;
+import calaerts.be.attendancesheet.repository.StudentDao;
 
-@Database(entities = {Student.class, KlasDB.class, Moment.class}, version = 1)
+@Database(entities = {StudentDb.class, KlasDB.class, Moment.class, MissedAttendance.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase INSTANCE;
 
-    public static AppDatabase getInMemoryDatabase(Context context) {
+    public static AppDatabase getDatabase(Context context) {
         if (INSTANCE == null) {
             INSTANCE = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "database")
                     .allowMainThreadQueries()
@@ -28,10 +32,11 @@ public abstract class AppDatabase extends RoomDatabase {
         INSTANCE = null;
     }
 
-    public abstract calaerts.be.attendancesheet.repository.KlasDao klasDao();
+    public abstract KlasDao klasDao();
 
-    public abstract calaerts.be.attendancesheet.repository.StudentDao studentDao();
+    public abstract StudentDao studentDao();
 
     public abstract MomentDao momentDao();
 
+    public abstract MissedAttendanceDao missedAttendanceDao();
 }

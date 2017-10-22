@@ -17,7 +17,7 @@ import javax.inject.Inject;
 import calaerts.be.attendancesheet.AttendanceApp;
 import calaerts.be.attendancesheet.R;
 import calaerts.be.attendancesheet.activities.klas.KlasListViewModel;
-import calaerts.be.attendancesheet.model.Student;
+import calaerts.be.attendancesheet.model.StudentDb;
 import calaerts.be.attendancesheet.repository.StudentDao;
 
 public class StudentDetail extends Fragment {
@@ -26,15 +26,15 @@ public class StudentDetail extends Fragment {
     @Inject
     StudentDao studentDao;
     private EditText nameEditText;
-    private Student student;
+    private StudentDb student;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ((AttendanceApp) getActivity().getApplication()).getAppComponent().inject(this);
-        klasViewModel.selectedStudent().observe(this, new Observer<Student>() {
+        klasViewModel.selectedStudent().observe(this, new Observer<StudentDb>() {
             @Override
-            public void onChanged(@Nullable Student student) {
+            public void onChanged(@Nullable StudentDb student) {
                 updateStudent(student);
             }
         });
@@ -80,7 +80,7 @@ public class StudentDetail extends Fragment {
                 getActivity().getCurrentFocus().getWindowToken(), 0);
     }
 
-    private void updateStudent(Student student) {
+    private void updateStudent(StudentDb student) {
         this.student = student;
         if (this.student != null && nameEditText != null) {
             nameEditText.setText(student.getName());

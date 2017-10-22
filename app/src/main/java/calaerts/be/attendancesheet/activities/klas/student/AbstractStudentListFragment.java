@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import calaerts.be.attendancesheet.R;
-import calaerts.be.attendancesheet.model.Student;
+import calaerts.be.attendancesheet.model.StudentDb;
 
 public abstract class AbstractStudentListFragment extends Fragment implements StudentInteractionListener {
     private MyStudentRecyclerViewAdapter adapter;
@@ -34,7 +34,7 @@ public abstract class AbstractStudentListFragment extends Fragment implements St
         recyclerView.setAdapter(adapter);
     }
 
-    public void setStudents(List<Student> students) {
+    public void setStudents(List<StudentDb> students) {
         if (students != null)
             adapter.setStudents(students);
     }

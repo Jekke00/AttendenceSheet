@@ -9,7 +9,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import java.util.Date;
+import org.joda.time.LocalDate;
 
 import calaerts.be.attendancesheet.R;
 import calaerts.be.attendancesheet.activities.attendance.EnterAttendanceActivity;
@@ -58,7 +58,7 @@ abstract public class AbstractAttendanceAppActivity extends AppCompatActivity {
 
     private void toAttendanceActivity() {
         Intent intent = new Intent(this, EnterAttendanceActivity.class);
-        intent.putExtra("date", new Date());
+        intent.putExtra("date", new LocalDate());
         startActivity(intent);
         this.finish();
     }

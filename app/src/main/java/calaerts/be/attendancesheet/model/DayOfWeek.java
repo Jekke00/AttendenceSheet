@@ -1,5 +1,8 @@
 package calaerts.be.attendancesheet.model;
 
+import org.joda.time.DateTimeConstants;
+import org.joda.time.LocalDate;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -7,13 +10,13 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 public enum DayOfWeek {
-    MONDAY(Calendar.MONDAY, "Maandag"),
-    TUESDAY(Calendar.TUESDAY, "Dinsdag"),
-    WEDNESDAY(Calendar.WEDNESDAY, "Woensdag"),
-    THURSDAY(Calendar.THURSDAY, "Donderdag"),
-    FRIDAY(Calendar.FRIDAY, "Vrijdag"),
-    SATURDAY(Calendar.SATURDAY, "Zaterdag"),
-    SUNDAY(Calendar.SUNDAY, "Zondag");
+    MONDAY(DateTimeConstants.MONDAY, "Maandag"),
+    TUESDAY(DateTimeConstants.TUESDAY, "Dinsdag"),
+    WEDNESDAY(DateTimeConstants.WEDNESDAY, "Woensdag"),
+    THURSDAY(DateTimeConstants.THURSDAY, "Donderdag"),
+    FRIDAY(DateTimeConstants.FRIDAY, "Vrijdag"),
+    SATURDAY(DateTimeConstants.SATURDAY, "Zaterdag"),
+    SUNDAY(DateTimeConstants.SUNDAY, "Zondag");
 
     public final int id;
     public final String value;
@@ -25,20 +28,20 @@ public enum DayOfWeek {
 
     public static DayOfWeek getDayById(int id){
         switch (id){
-            case 1:
-                return SUNDAY;
-            case 2:
+            case DateTimeConstants.MONDAY:
                 return MONDAY;
-            case 3:
+            case DateTimeConstants.TUESDAY:
                 return TUESDAY;
-            case 4:
+            case DateTimeConstants.WEDNESDAY:
                 return WEDNESDAY;
-            case 5:
+            case DateTimeConstants.THURSDAY:
                 return THURSDAY;
-            case 6:
+            case DateTimeConstants.FRIDAY:
                 return FRIDAY;
-            case 7:
+            case DateTimeConstants.SATURDAY:
                 return SATURDAY;
+            case DateTimeConstants.SUNDAY:
+                return SUNDAY;
             default:
                 throw new IllegalArgumentException("unkown day code");
         }
@@ -48,6 +51,10 @@ public enum DayOfWeek {
         Calendar calendar = GregorianCalendar.getInstance();
         calendar.setTime(date);
         return DayOfWeek.getDayById(calendar.get(Calendar.DAY_OF_WEEK));
+    }
+
+    public static DayOfWeek of(LocalDate localDate) {
+        return getDayById(localDate.getDayOfWeek());
     }
 
     public List<Hour> getAvailableHours() {

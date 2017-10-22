@@ -11,7 +11,7 @@ import javax.inject.Inject;
 import calaerts.be.attendancesheet.AttendanceApp;
 import calaerts.be.attendancesheet.activities.klas.KlasListViewModel;
 import calaerts.be.attendancesheet.model.Klas;
-import calaerts.be.attendancesheet.model.Student;
+import calaerts.be.attendancesheet.model.StudentDb;
 
 public class StudentListFragment extends AbstractStudentListFragment {
 
@@ -50,7 +50,7 @@ public class StudentListFragment extends AbstractStudentListFragment {
     }
 
     @Override
-    public void onStudentSelected(Student student) {
+    public void onStudentSelected(StudentDb student) {
         klasViewModel.selectStudent(student);
     }
 

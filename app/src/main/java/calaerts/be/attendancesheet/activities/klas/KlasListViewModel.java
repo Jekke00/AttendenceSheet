@@ -17,7 +17,7 @@ import calaerts.be.attendancesheet.model.Hour;
 import calaerts.be.attendancesheet.model.Klas;
 import calaerts.be.attendancesheet.model.KlasDB;
 import calaerts.be.attendancesheet.model.Moment;
-import calaerts.be.attendancesheet.model.Student;
+import calaerts.be.attendancesheet.model.StudentDb;
 import calaerts.be.attendancesheet.repository.KlasRepository;
 import calaerts.be.attendancesheet.repository.MomentDao;
 
@@ -25,7 +25,7 @@ public class KlasListViewModel extends ViewModel {
     private final KlasRepository klasRepository;
     private final MomentDao momentDao;
     private final MediatorLiveData<Klas> selectedKlasLiveData = new MediatorLiveData<>();
-    private final MutableLiveData<Student> studentLiveData = new MutableLiveData<>();
+    private final MutableLiveData<StudentDb> studentLiveData = new MutableLiveData<>();
     private final MediatorLiveData<Day> dayMediator = new MediatorLiveData<>();
 
     private LiveData<Klas> currentLiveDataOfKlas;
@@ -58,11 +58,11 @@ public class KlasListViewModel extends ViewModel {
         });
     }
 
-    public LiveData<Student> selectedStudent() {
+    public LiveData<StudentDb> selectedStudent() {
         return studentLiveData;
     }
 
-    public void selectStudent(Student student) {
+    public void selectStudent(StudentDb student) {
         studentLiveData.setValue(student);
     }
 

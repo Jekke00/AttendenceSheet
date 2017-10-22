@@ -2,7 +2,7 @@ package calaerts.be.attendancesheet.activities.attendance;
 
 import android.os.Bundle;
 
-import java.util.Date;
+import org.joda.time.LocalDate;
 
 import javax.inject.Inject;
 
@@ -18,7 +18,7 @@ public class EnterAttendanceActivity extends AbstractAttendanceAppActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ((AttendanceApp) getApplication()).getAppComponent().inject(this);
-        attendanceViewModel.selectDate((Date) getIntent().getSerializableExtra("date"));
+        attendanceViewModel.selectDate((LocalDate) getIntent().getSerializableExtra("date"));
     }
 
     @Override

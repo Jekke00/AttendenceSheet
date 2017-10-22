@@ -9,10 +9,10 @@ import java.util.List;
 public class Klas implements Serializable {
     private int id;
     private String name;
-    private List<Student> students = new ArrayList<>();
+    private List<StudentDb> students = new ArrayList<>();
     private List<Moment> moments = new ArrayList<>();
 
-    public Klas(KlasDB klasDB, List<Student> students, List<Moment> moments) {
+    public Klas(KlasDB klasDB, List<StudentDb> students, List<Moment> moments) {
         this.id = klasDB.getId();
         this.name = klasDB.getName();
         this.students = students;
@@ -24,7 +24,7 @@ public class Klas implements Serializable {
     }
 
     @NonNull
-    public List<Student> getStudents() {
+    public List<StudentDb> getStudents() {
         return students;
     }
 

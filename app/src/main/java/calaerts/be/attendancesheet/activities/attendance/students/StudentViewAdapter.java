@@ -10,60 +10,58 @@ import java.util.ArrayList;
 import java.util.List;
 
 import calaerts.be.attendancesheet.R;
-import calaerts.be.attendancesheet.activities.klas.student.StudentInteractionListener;
-import calaerts.be.attendancesheet.model.StudentDb;
+import calaerts.be.attendancesheet.activities.attendance.students.StudentFragment.OnListFragmentInteractionListener;
+import calaerts.be.attendancesheet.model.Student;
 
-public class SelectableStudentRecyclerViewAdapter extends RecyclerView.Adapter<SelectableStudentRecyclerViewAdapter.ViewHolder> {
+public class StudentViewAdapter extends RecyclerView.Adapter<StudentViewAdapter.ViewHolder> {
 
-    private StudentInteractionListener mListener;
-    private List<StudentDb> students = new ArrayList<>();
+    private final OnListFragmentInteractionListener mListener;
+    private List<Student> values = new ArrayList<>();
 
-    public SelectableStudentRecyclerViewAdapter(StudentInteractionListener listener) {
+    public StudentViewAdapter(OnListFragmentInteractionListener listener) {
         mListener = listener;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_student, parent, false);
+                .inflate(R.layout.fragment_student_selecteable, parent, false);
         return new ViewHolder(view);
     }
 
-
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.mItem = students.get(position);
-        holder.checkBox.setText(students.get(position).getName());
+        holder.mItem = values.get(position);
+        holder.checkBox.setText(values.get(position).getName());
+        holder.checkBox.setChecked(values.get(position).getMissedAttendances().size() != 0);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (null != mListener) {
-                    mListener.onStudentSelected(holder.mItem);
-                }
+                if (null != mListener) mListener.onListFragmentInteraction(holder.mItem);
             }
         });
     }
 
-    public void setStudents(List<StudentDb> students) {
-        this.students = students;
-        notifyDataSetChanged();
+    public void setStudents(List<Student> students) {
+        this.values = students;
+        this.notifyDataSetChanged();
     }
 
     @Override
     public int getItemCount() {
-        return students.size();
+        return values.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final CheckBox checkBox;
-        public StudentDb mItem;
+        public Student mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            checkBox = view.findViewById(R.id.id);
+            checkBox = view.findViewById(R.id.studentCheckBox);
         }
     }
 }
