@@ -6,17 +6,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 
+import org.joda.time.LocalDate;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import calaerts.be.attendancesheet.R;
 import calaerts.be.attendancesheet.activities.attendance.students.StudentFragment.OnListFragmentInteractionListener;
+import calaerts.be.attendancesheet.model.Hour;
 import calaerts.be.attendancesheet.model.Student;
 
 public class StudentViewAdapter extends RecyclerView.Adapter<StudentViewAdapter.ViewHolder> {
 
     private final OnListFragmentInteractionListener mListener;
     private List<Student> values = new ArrayList<>();
+    private LocalDate currentDate = new LocalDate();
+    private Hour currentHour;
 
     public StudentViewAdapter(OnListFragmentInteractionListener listener) {
         mListener = listener;
@@ -33,9 +39,9 @@ public class StudentViewAdapter extends RecyclerView.Adapter<StudentViewAdapter.
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = values.get(position);
         holder.checkBox.setText(values.get(position).getName());
-        holder.checkBox.setChecked(values.get(position).getMissedAttendances().size() != 0);
+        holder.checkBox.setChecked(values.get(position).hasMissedAttendanceAtDate(currentDate, currentHour));
 
-        holder.mView.setOnClickListener(new View.OnClickListener() {
+        holder.checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (null != mListener) mListener.onListFragmentInteraction(holder.mItem);
@@ -44,10 +50,20 @@ public class StudentViewAdapter extends RecyclerView.Adapter<StudentViewAdapter.
     }
 
     public void setStudents(List<Student> students) {
-        this.values = students;
+        Collections.sort(students);
+        values = students;
         this.notifyDataSetChanged();
     }
 
+    public void setDate(LocalDate localDate) {
+        currentDate = localDate == null ? new LocalDate() : localDate;
+        notifyDataSetChanged();
+    }
+
+    public void setCurrentHour(Hour hour) {
+        currentHour = hour;
+        notifyDataSetChanged();
+    }
     @Override
     public int getItemCount() {
         return values.size();

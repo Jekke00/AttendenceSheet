@@ -4,9 +4,6 @@ import org.joda.time.DateTimeConstants;
 import org.joda.time.LocalDate;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 public enum DayOfWeek {
@@ -47,11 +44,6 @@ public enum DayOfWeek {
         }
     }
 
-    public static DayOfWeek fromDate(Date date) {
-        Calendar calendar = GregorianCalendar.getInstance();
-        calendar.setTime(date);
-        return DayOfWeek.getDayById(calendar.get(Calendar.DAY_OF_WEEK));
-    }
 
     public static DayOfWeek of(LocalDate localDate) {
         return getDayById(localDate.getDayOfWeek());

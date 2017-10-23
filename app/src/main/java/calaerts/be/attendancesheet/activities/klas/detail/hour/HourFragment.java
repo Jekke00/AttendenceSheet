@@ -24,6 +24,7 @@ public class HourFragment extends AbstractHourFragment {
     MomentDao momentDao;
     @Inject
     KlasListViewModel klasViewModel;
+    private Integer currentKlasId = -1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,7 +44,15 @@ public class HourFragment extends AbstractHourFragment {
         klasViewModel.getSelectedKlas().observe(this, new Observer<Klas>() {
             @Override
             public void onChanged(@Nullable Klas klas) {
-                clearHours();
+                if (klas == null) {
+                    clearHours();
+                    currentKlasId = null;
+                    return;
+                }
+                if (currentKlasId == null || klas.getId() != currentKlasId) {
+                    clearHours();
+                    currentKlasId = klas.getId();
+                }
             }
         });
         return view;

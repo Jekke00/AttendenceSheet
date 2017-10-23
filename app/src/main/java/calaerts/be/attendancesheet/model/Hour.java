@@ -1,8 +1,9 @@
 package calaerts.be.attendancesheet.model;
 
 import android.arch.persistence.room.Ignore;
+import android.support.annotation.NonNull;
 
-public class Hour {
+public class Hour implements Comparable<Hour> {
     private final int hour;
     @Ignore
     private boolean selected;
@@ -37,5 +38,11 @@ public class Hour {
     @Override
     public int hashCode() {
         return hour;
+    }
+
+
+    @Override
+    public int compareTo(@NonNull Hour hour) {
+        return Integer.compare(getHour(), hour.getHour());
     }
 }

@@ -11,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.joda.time.LocalDate;
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -18,6 +20,7 @@ import javax.inject.Inject;
 import calaerts.be.attendancesheet.AttendanceApp;
 import calaerts.be.attendancesheet.R;
 import calaerts.be.attendancesheet.activities.attendance.AttendanceViewModel;
+import calaerts.be.attendancesheet.model.Hour;
 import calaerts.be.attendancesheet.model.MissedAttendance;
 import calaerts.be.attendancesheet.model.Student;
 import calaerts.be.attendancesheet.repository.MissedAttendanceDao;
@@ -55,11 +58,13 @@ public class StudentFragment extends Fragment {
     }
 
     private void onStudentSelected(Student item) {
-        if (item.getMissedAttendances().isEmpty()) {
-            final MissedAttendance missedAttendance = new MissedAttendance(item.getId(), attendanceViewModel.selectedHour().getValue(), attendanceViewModel.selectedDate().getValue());
+        final LocalDate date = attendanceViewModel.selectedDate().getValue();
+        final Hour hour = attendanceViewModel.selectedHour().getValue();
+        if (!item.hasMissedAttendanceAtDate(date, hour)) {
+            final MissedAttendance missedAttendance = new MissedAttendance(item.getId(), hour, date);
             missedAttendanceDao.saveAttendance(missedAttendance);
         } else {
-            missedAttendanceDao.deleteMissedAttendance(item.getMissedAttendances().get(0));
+            missedAttendanceDao.deleteMissedAttendance(item.getMissedAttendanceAtDate(date, hour));
         }
     }
 
@@ -70,6 +75,18 @@ public class StudentFragment extends Fragment {
             @Override
             public void onChanged(@Nullable List<Student> students) {
                 onStudentsUpdates(students);
+            }
+        });
+        attendanceViewModel.selectedDate().observe(this, new Observer<LocalDate>() {
+            @Override
+            public void onChanged(@Nullable LocalDate localDate) {
+                adapter.setDate(localDate);
+            }
+        });
+        attendanceViewModel.selectedHour().observe(this, new Observer<Hour>() {
+            @Override
+            public void onChanged(@Nullable Hour hour) {
+                adapter.setCurrentHour(hour);
             }
         });
     }

@@ -48,7 +48,7 @@ abstract public class AbstractAttendanceAppActivity extends AppCompatActivity {
                 toManageKlasActivity();
                 return true;
             case R.id.enterAttendence:
-                toAttendanceActivity();
+                toAttendanceActivity(new LocalDate());
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -56,9 +56,9 @@ abstract public class AbstractAttendanceAppActivity extends AppCompatActivity {
         }
     }
 
-    private void toAttendanceActivity() {
+    private void toAttendanceActivity(LocalDate localDate) {
         Intent intent = new Intent(this, EnterAttendanceActivity.class);
-        intent.putExtra("date", new LocalDate());
+        intent.putExtra("date", localDate);
         startActivity(intent);
         this.finish();
     }

@@ -31,6 +31,7 @@ public class AttendanceViewModel extends ViewModel {
     private LiveData<List<Hour>> currentHoursLiveData;
     private LiveData<List<Student>> currentStudentLiveData;
     private LocalDate selectedDate;
+
     private Function<List<StudentWithMissedAttendances>, List<Student>> studentMapper = new Function<List<StudentWithMissedAttendances>, List<Student>>() {
         @Override
         public List<Student> apply(List<StudentWithMissedAttendances> studentsWithMissedAttendances) {
@@ -52,8 +53,7 @@ public class AttendanceViewModel extends ViewModel {
     }
 
     public void selectDate(LocalDate date) {
-        if (currentHoursLiveData != null)
-            availableHourAtDayMediator.removeSource(currentHoursLiveData);
+        clearData();
         selectedDate = date;
         selectedDateLiveDate.setValue(date);
         currentHoursLiveData = momentDao.getHoursAtDay(DayOfWeek.of(date));
@@ -65,13 +65,24 @@ public class AttendanceViewModel extends ViewModel {
         });
     }
 
+    private void clearData() {
+        if (currentHoursLiveData != null) {
+            availableHourAtDayMediator.removeSource(currentHoursLiveData);
+            availableHourAtDayMediator.setValue(new ArrayList<Hour>());
+        }
+        if (currentHoursLiveData != null) {
+            studentMediator.removeSource(currentHoursLiveData);
+            studentMediator.setValue(new ArrayList<Student>());
+        }
+    }
+
     public LiveData<LocalDate> selectedDate() {
         return selectedDateLiveDate;
     }
 
     public void selectHour(Hour hour) {
         if (currentStudentLiveData != null) {
-            studentMediator.removeSource(currentHoursLiveData);
+            studentMediator.removeSource(currentStudentLiveData);
         }
         selectedHourLiveDate.setValue(hour);
         if (DayOfWeek.of(selectedDate) != null && hour != null) {
@@ -95,7 +106,7 @@ public class AttendanceViewModel extends ViewModel {
     }
 
     private void generateStudentLiveData(Hour hour) {
-        this.currentStudentLiveData = Transformations.map(studentDao.getStudentsAtDayOfWeekAndHour(DayOfWeek.of(selectedDate), hour, selectedDate), studentMapper);
+        this.currentStudentLiveData = Transformations.map(studentDao.getStudentsAtDayOfWeekAndHour(DayOfWeek.of(selectedDate), hour), studentMapper);
     }
 
     public LiveData<List<Student>> getStudents() {
