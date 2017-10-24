@@ -40,10 +40,10 @@ public class StudentListFragment extends AbstractStudentListFragment {
     }
 
     @Override
-    public Function<StudentInteractionListener, AbstractStudentRecyclerViewAdapter> getAdapterFactory() {
-        return new Function<StudentInteractionListener, AbstractStudentRecyclerViewAdapter>() {
+    public Function<StudentInteractionListener, AbstractSelectableRecyclerViewAdapter> getAdapterFactory() {
+        return new Function<StudentInteractionListener, AbstractSelectableRecyclerViewAdapter>() {
             @Override
-            public AbstractStudentRecyclerViewAdapter apply(StudentInteractionListener studentInteractionListener) {
+            public AbstractSelectableRecyclerViewAdapter apply(StudentInteractionListener studentInteractionListener) {
                 return new MyStudentRecyclerViewAdapter(studentInteractionListener);
             }
         };

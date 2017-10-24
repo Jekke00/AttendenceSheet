@@ -7,20 +7,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Klas implements Serializable {
-    private int id;
-    private String name;
+    private KlasDB klasDB;
     private List<StudentDb> students = new ArrayList<>();
     private List<Moment> moments = new ArrayList<>();
 
     public Klas(KlasDB klasDB, List<StudentDb> students, List<Moment> moments) {
-        this.id = klasDB.getId();
-        this.name = klasDB.getName();
+        this.klasDB = klasDB;
         this.students = students;
         this.moments = moments;
     }
 
     public String getName() {
-        return name;
+        return klasDB.getName();
     }
 
     @NonNull
@@ -29,10 +27,14 @@ public class Klas implements Serializable {
     }
 
     public int getId() {
-        return id;
+        return klasDB.getId();
     }
 
     public List<Moment> getMoments() {
         return moments;
+    }
+
+    public KlasDB getKlasDb() {
+        return klasDB;
     }
 }

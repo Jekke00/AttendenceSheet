@@ -35,6 +35,7 @@ public class EnterAttendanceActivity extends AbstractAttendanceAppActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         final boolean ok = super.onCreateOptionsMenu(menu);
         menu.add(0, 0, 0, "Select day");
+        menu.removeItem(R.id.enterAttendence);
         return ok;
     }
 

@@ -4,16 +4,33 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import calaerts.be.attendancesheet.R;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
-public class ManageHourRecyclerViewAdapter extends AbstractHourRecyclerViewAdapter<HourViewHolder> {
+import calaerts.be.attendancesheet.R;
+import calaerts.be.attendancesheet.model.Hour;
+
+public class ManageHourRecyclerViewAdapter extends AbstractHourRecyclerViewAdapter<KlasHourViewHolder> {
 
     public ManageHourRecyclerViewAdapter(OnHourListInteraction listener) {
         super(listener);
     }
 
     @Override
-    public HourViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public void setData(List<Hour> data) {
+        super.setData(data);
+        Set<Hour> selectedHours = new HashSet<>();
+        for (Hour hour : data) {
+            if (hour.isSelected()) {
+                selectedHours.add(hour);
+            }
+        }
+        setSelected(selectedHours);
+    }
+
+    @Override
+    public KlasHourViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_hour, parent, false);
         return new KlasHourViewHolder(view);
     }

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
 import android.view.View;
 
 import java.util.List;
@@ -28,7 +29,7 @@ public class KlasListActivity extends AbstractAttendanceAppActivity implements K
     @Inject
     KlasListViewModel klasViewModel;
     private boolean isTwoPane;
-    private SimpleItemRecyclerViewAdapter adapter;
+    private KlasRecycleViewAdapter adapter;
     private Klas currentKlas;
 
     @Override
@@ -39,7 +40,7 @@ public class KlasListActivity extends AbstractAttendanceAppActivity implements K
         klasViewModel.allKlassen().observe(this, new Observer<List<KlasDB>>() {
             @Override
             public void onChanged(@Nullable List<KlasDB> klases) {
-                adapter.setKlassen(klases);
+                adapter.setData(klases);
             }
         });
         klasViewModel.getSelectedKlas().observe(this, new Observer<Klas>() {
@@ -55,6 +56,13 @@ public class KlasListActivity extends AbstractAttendanceAppActivity implements K
             }
         });
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        menu.removeItem(R.id.manageKlas);
+        return true;
     }
 
     private void setupViews() {
@@ -86,7 +94,7 @@ public class KlasListActivity extends AbstractAttendanceAppActivity implements K
 
 
     private void setupRecyclerView() {
-        adapter = new SimpleItemRecyclerViewAdapter();
+        adapter = new KlasRecycleViewAdapter();
         adapter.setKlasViewHolderListener(this);
         RecyclerView recyclerView = findViewById(R.id.class_list);
         recyclerView.setAdapter(adapter);
@@ -128,6 +136,7 @@ public class KlasListActivity extends AbstractAttendanceAppActivity implements K
                 .replace(R.id.class_detail_container, fragment)
                 .commit();
         currentKlas = klas;
+        adapter.setSelected(klas.getKlasDb());
     }
 
     private void changePaneToStudent(StudentDb student) {

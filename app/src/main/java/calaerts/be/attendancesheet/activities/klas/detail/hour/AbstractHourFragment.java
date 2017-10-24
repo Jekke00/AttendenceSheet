@@ -27,7 +27,7 @@ public abstract class AbstractHourFragment extends Fragment {
     }
 
     public void clearHours() {
-        getAdapter().setHours(new ArrayList<Hour>());
+        getAdapter().setData(new ArrayList<Hour>());
     }
 
     private void setupRecyclerView(RecyclerView recyclerView) {
@@ -38,7 +38,6 @@ public abstract class AbstractHourFragment extends Fragment {
                 onHourClicked(item);
             }
         });
-
         recyclerView.setAdapter(getAdapter());
     }
 

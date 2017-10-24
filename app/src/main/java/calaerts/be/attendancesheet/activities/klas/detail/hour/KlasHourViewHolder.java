@@ -14,6 +14,11 @@ public class KlasHourViewHolder extends HourViewHolder {
         checkBox = view.findViewById(R.id.checkBox);
     }
 
+    @Override
+    public void setSelected(boolean selected) {
+        this.checkBox.setSelected(selected);
+    }
+
 
     @Override
     public void setHour(final Hour hour, final OnHourListInteraction onHourListInteraction) {

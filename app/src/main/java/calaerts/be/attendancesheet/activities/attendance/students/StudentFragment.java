@@ -92,7 +92,7 @@ public class StudentFragment extends Fragment {
     }
 
     private void onStudentsUpdates(List<Student> studentList) {
-        adapter.setStudents(studentList);
+        adapter.setData(studentList);
     }
 
     public interface OnListFragmentInteractionListener {

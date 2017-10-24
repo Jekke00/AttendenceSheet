@@ -1,11 +1,10 @@
 package calaerts.be.attendancesheet.activities.klas.detail.hour;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import calaerts.be.attendancesheet.model.Hour;
 
-public abstract class HourViewHolder extends RecyclerView.ViewHolder {
+public abstract class HourViewHolder extends SelectableViewHolder {
     public HourViewHolder(View itemView) {
         super(itemView);
     }

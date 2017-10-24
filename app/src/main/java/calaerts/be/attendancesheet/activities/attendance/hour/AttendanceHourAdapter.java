@@ -8,7 +8,6 @@ import calaerts.be.attendancesheet.R;
 import calaerts.be.attendancesheet.activities.klas.detail.hour.AbstractHourRecyclerViewAdapter;
 import calaerts.be.attendancesheet.activities.klas.detail.hour.OnHourListInteraction;
 
-
 public class AttendanceHourAdapter extends AbstractHourRecyclerViewAdapter<AttendanceHourViewHolder> {
     public AttendanceHourAdapter(OnHourListInteraction listener) {
         super(listener);

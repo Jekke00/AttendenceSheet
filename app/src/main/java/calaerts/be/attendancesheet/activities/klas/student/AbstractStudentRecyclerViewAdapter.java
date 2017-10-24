@@ -1,34 +1,32 @@
 package calaerts.be.attendancesheet.activities.klas.student;
 
-import android.support.v7.widget.RecyclerView;
-
-import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import calaerts.be.attendancesheet.model.StudentDb;
 
-public abstract class AbstractStudentRecyclerViewAdapter extends RecyclerView.Adapter<ModifyStudentListViewHolder> {
+public abstract class AbstractStudentRecyclerViewAdapter extends AbstractSelectableRecyclerViewAdapter<StudentDb, ModifyStudentListViewHolder> {
     private StudentInteractionListener listener;
-    private List<StudentDb> students = new ArrayList<>();
 
     AbstractStudentRecyclerViewAdapter(StudentInteractionListener listener) {
         this.listener = listener;
     }
 
-    public void setStudents(List<StudentDb> students) {
-        this.students = students;
-        notifyDataSetChanged();
-    }
-
     @Override
-    public int getItemCount() {
-        return students.size();
+    public void setData(List<StudentDb> data) {
+        Collections.sort(data, new Comparator<StudentDb>() {
+            @Override
+            public int compare(StudentDb studentDb, StudentDb t1) {
+                return studentDb.getName().compareTo(t1.getName());
+            }
+        });
+        super.setData(data);
     }
 
     @Override
     public void onBindViewHolder(ModifyStudentListViewHolder holder, int position) {
-        holder.setStudent(students.get(position), listener);
+        super.onBindViewHolder(holder, position);
+        holder.setStudent(getData().get(position), listener);
     }
-
-
 }

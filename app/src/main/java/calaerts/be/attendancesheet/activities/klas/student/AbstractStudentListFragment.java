@@ -36,8 +36,8 @@ public abstract class AbstractStudentListFragment extends Fragment implements St
 
     public void setStudents(List<StudentDb> students) {
         if (students != null)
-            adapter.setStudents(students);
+            adapter.setData(students);
     }
 
-    public abstract Function<StudentInteractionListener, AbstractStudentRecyclerViewAdapter> getAdapterFactory();
+    public abstract Function<StudentInteractionListener, AbstractSelectableRecyclerViewAdapter> getAdapterFactory();
 }

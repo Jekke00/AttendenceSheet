@@ -1,42 +1,19 @@
 package calaerts.be.attendancesheet.activities.klas.detail.hour;
 
-import android.support.v7.widget.RecyclerView;
-
-import java.util.ArrayList;
-import java.util.List;
-
+import calaerts.be.attendancesheet.activities.klas.student.AbstractSelectableRecyclerViewAdapter;
 import calaerts.be.attendancesheet.model.Hour;
 
-public abstract class AbstractHourRecyclerViewAdapter<T extends HourViewHolder> extends RecyclerView.Adapter<T> {
-    private final OnHourListInteraction mListener;
-    private List<Hour> hours = new ArrayList<>();
+public abstract class AbstractHourRecyclerViewAdapter<VH extends HourViewHolder> extends AbstractSelectableRecyclerViewAdapter<Hour, VH> {
+    private final OnHourListInteraction listener;
 
     public AbstractHourRecyclerViewAdapter(OnHourListInteraction listener) {
-        mListener = listener;
+        this.listener = listener;
     }
 
     @Override
-    public int getItemCount() {
-        return hours.size();
-    }
-
-    private List<Hour> getHours() {
-        return hours;
-    }
-
-    public void setHours(List<Hour> hours) {
-        this.hours = hours;
-        notifyDataSetChanged();
-    }
-
-    private OnHourListInteraction getListener() {
-        return mListener;
-    }
-
-    @Override
-    public void onBindViewHolder(T holder, int position) {
-        final Hour hour = getHours().get(position);
-        holder.setHour(hour, getListener());
+    public void onBindViewHolder(VH holder, int position) {
+        super.onBindViewHolder(holder, position);
+        holder.setHour(getData().get(position), listener);
     }
 
 }

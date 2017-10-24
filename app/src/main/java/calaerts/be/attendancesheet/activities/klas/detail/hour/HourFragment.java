@@ -60,7 +60,7 @@ public class HourFragment extends AbstractHourFragment {
 
     private void onDayUpdated(@Nullable Day day) {
         if (day != null)
-            getAdapter().setHours(day.getHours());
+            getAdapter().setData(day.getHours());
     }
 
     @Override
