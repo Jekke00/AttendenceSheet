@@ -35,7 +35,7 @@ public class NewKlas extends Fragment {
     }
 
     public void onCreatePressed(View view) {
-        EditText editText = getView().findViewById(R.id.clasName);
+        EditText editText = getView().findViewById(R.id.klasName);
         this.klas.setName(editText.getText().toString());
     }
 

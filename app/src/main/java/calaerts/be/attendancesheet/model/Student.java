@@ -10,10 +10,12 @@ import java.util.List;
 public class Student implements Comparable<Student> {
     private final StudentDb student;
     private final List<MissedAttendance> missedAttendances;
+    private final int color;
 
-    public Student(StudentDb student, List<MissedAttendance> missedAttendances) {
+    public Student(StudentDb student, List<MissedAttendance> missedAttendances, int color) {
         this.student = student;
         this.missedAttendances = missedAttendances;
+        this.color = color;
     }
 
     public String getName() {
@@ -44,5 +46,9 @@ public class Student implements Comparable<Student> {
     @Override
     public int compareTo(@NonNull Student student) {
         return getName().compareTo(student.getName());
+    }
+
+    public int getColor() {
+        return color;
     }
 }

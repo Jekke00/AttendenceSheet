@@ -19,7 +19,7 @@ import calaerts.be.attendancesheet.model.StudentWithMissedAttendances;
 @TypeConverters(Converters.class)
 public interface StudentDao {
 
-    @Query("select student.* from StudentDb student " +
+    @Query("select student.*, klas.color as color from StudentDb student " +
             "inner join Klas klas on klas.id =student.klasId " +
             "inner join Moment moment on moment.klasId=student.klasId " +
             "where moment.dayOfWeek=:dayOfWeek and moment.hour =:hour")

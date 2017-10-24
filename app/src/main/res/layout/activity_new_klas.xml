@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:orientation="vertical"
-              app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="calaerts.be.attendancesheet.activities.klas.newKlas.NewKlasActivity"
-              tools:showIn="@layout/activity_new_klas">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="calaerts.be.attendancesheet.activities.klas.newKlas.KlasDetailActivity"
+    tools:showIn="@layout/activity_new_klas">
 
-    <TextView
-        android:id="@+id/textView2"
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="@string/new_class"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+        android:theme="@style/AppTheme.AppBarOverlay">
 
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+    </android.support.design.widget.AppBarLayout>
     <EditText
-        android:id="@+id/clasName"
+        android:id="@+id/klasName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -27,11 +31,20 @@
         android:inputType="textPersonName" />
 
     <Button
+        android:id="@+id/changeColor"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:onClick="onColorChangedPressed"
+        android:text="@string/change_color" />
+
+    <Button
         android:id="@+id/create_class"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:onClick="onCreatePressed"
-        android:text="@string/create"/>
+        android:text="@string/save" />
 </LinearLayout>

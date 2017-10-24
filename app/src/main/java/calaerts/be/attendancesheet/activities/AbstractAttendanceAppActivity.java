@@ -1,7 +1,9 @@
 package calaerts.be.attendancesheet.activities;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -30,8 +32,6 @@ abstract public class AbstractAttendanceAppActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         if (toolbar != null)
             toolbar.setTitle(getTitle());
-
-
     }
 
     @Override
@@ -67,5 +67,9 @@ abstract public class AbstractAttendanceAppActivity extends AppCompatActivity {
         Intent intent = new Intent(this, KlasListActivity.class);
         startActivity(intent);
         this.finish();
+    }
+
+    protected void setToolbarColor(@ColorInt int color) {
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(color));
     }
 }

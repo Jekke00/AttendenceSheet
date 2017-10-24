@@ -37,7 +37,7 @@ public class AttendanceViewModel extends ViewModel {
         public List<Student> apply(List<StudentWithMissedAttendances> studentsWithMissedAttendances) {
             List<Student> students = new ArrayList<>();
             for (StudentWithMissedAttendances studentWithMissedAttendance : studentsWithMissedAttendances) {
-                students.add(new Student(studentWithMissedAttendance.student, studentWithMissedAttendance.missedAttendances));
+                students.add(new Student(studentWithMissedAttendance.student, studentWithMissedAttendance.missedAttendances, studentWithMissedAttendance.color));
             }
             return students;
         }

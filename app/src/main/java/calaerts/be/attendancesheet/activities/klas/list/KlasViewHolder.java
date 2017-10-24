@@ -37,5 +37,12 @@ public class KlasViewHolder extends SelectableViewHolder {
                 }
             }
         });
+        mView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                klasViewHolderListener.onKlasLongClicked(klas);
+                return true;
+            }
+        });
     }
 }

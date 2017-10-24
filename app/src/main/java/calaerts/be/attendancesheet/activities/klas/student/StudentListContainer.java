@@ -21,7 +21,6 @@ import calaerts.be.attendancesheet.model.StudentDb;
 public class StudentListContainer extends Fragment {
     @Inject
     KlasListViewModel klasViewModel;
-    private AbstractStudentListFragment studentList;
     private Klas klas;
 
     @Override

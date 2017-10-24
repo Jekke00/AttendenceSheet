@@ -30,7 +30,7 @@
                 android:value="calaerts.be.attendancesheet.activities.klas.list.KlasListActivity" />
         </activity>
         <activity
-            android:name="calaerts.be.attendancesheet.activities.klas.newKlas.NewKlasActivity"
+            android:name="calaerts.be.attendancesheet.activities.klas.newKlas.KlasDetailActivity"
             android:label="@string/title_activity_new_klas"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity

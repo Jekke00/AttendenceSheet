@@ -11,7 +11,7 @@ import android.view.View;
 
 import calaerts.be.attendancesheet.R;
 import calaerts.be.attendancesheet.activities.klas.list.KlasListActivity;
-import calaerts.be.attendancesheet.activities.klas.newKlas.NewKlasActivity;
+import calaerts.be.attendancesheet.activities.klas.newKlas.KlasDetailActivity;
 
 public class ClassDetailActivity extends AppCompatActivity {
 
@@ -54,7 +54,7 @@ public class ClassDetailActivity extends AppCompatActivity {
     }
 
     private void startNewKlasActivity() {
-        Intent intent = new Intent(ClassDetailActivity.this, NewKlasActivity.class);
+        Intent intent = new Intent(ClassDetailActivity.this, KlasDetailActivity.class);
         startActivity(intent);
     }
 

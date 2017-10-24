@@ -2,16 +2,21 @@ package calaerts.be.attendancesheet.model;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity(tableName = "klas")
-public class KlasDB {
+public class KlasDB implements Serializable {
     @PrimaryKey(autoGenerate = true)
     @NonNull
     private int id;
     private String name;
+    private
+    @ColorInt
+    int color;
 
     @NonNull
     public int getId() {
@@ -30,6 +35,14 @@ public class KlasDB {
         this.name = name;
     }
 
+    public int getColor() {
+        return color;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -43,4 +56,5 @@ public class KlasDB {
     public int hashCode() {
         return Objects.hash(id, name);
     }
+
 }

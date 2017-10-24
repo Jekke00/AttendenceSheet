@@ -4,11 +4,11 @@
     <string name="new_class">New Class</string>
     <string name="klas_name">Klas name</string>
     <string name="students">Students</string>
-    <string name="create">create</string>
     <string name="name">Name</string>
     <string name="title_activity_new_klas">NewKlasActivity</string>
     <string name="manage_classes">Manage Classes</string>
     <string name="enter_attendence">Enter attendance</string>
     <string name="title_activity_enter_attendance">EnterAttendanceActivity</string>
     <string name="save">save</string>
+    <string name="change_color">Change Color</string>
 </resources>

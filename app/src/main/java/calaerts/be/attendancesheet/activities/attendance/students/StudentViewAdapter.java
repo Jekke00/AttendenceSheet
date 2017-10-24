@@ -38,6 +38,7 @@ public class StudentViewAdapter extends AbstractSelectableRecyclerViewAdapter<St
     public void onBindViewHolder(final StudentViewHolder holder, int position) {
         super.onBindViewHolder(holder, position);
         holder.mItem = getData().get(position);
+        holder.mView.setBackgroundColor(holder.mItem.getColor());
         holder.checkBox.setText(getData().get(position).getName());
         holder.checkBox.setOnClickListener(new View.OnClickListener() {
             @Override

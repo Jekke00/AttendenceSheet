@@ -10,8 +10,8 @@ import calaerts.be.attendancesheet.activities.klas.detail.ClassDetailFragment;
 import calaerts.be.attendancesheet.activities.klas.detail.day.DayListFragment;
 import calaerts.be.attendancesheet.activities.klas.detail.hour.HourFragment;
 import calaerts.be.attendancesheet.activities.klas.list.KlasListActivity;
+import calaerts.be.attendancesheet.activities.klas.newKlas.KlasDetailActivity;
 import calaerts.be.attendancesheet.activities.klas.newKlas.NewKlas;
-import calaerts.be.attendancesheet.activities.klas.newKlas.NewKlasActivity;
 import calaerts.be.attendancesheet.activities.klas.student.StudentDetail;
 import calaerts.be.attendancesheet.activities.klas.student.StudentListContainer;
 import calaerts.be.attendancesheet.activities.klas.student.StudentListFragment;
@@ -24,7 +24,7 @@ public interface AppComponent {
 
     void inject(KlasListActivity newKlas);
 
-    void inject(NewKlasActivity newKlasActivity);
+    void inject(KlasDetailActivity newKlasActivity);
 
     void inject(ClassDetailFragment classDetailFragment);
 

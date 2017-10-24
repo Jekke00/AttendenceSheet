@@ -37,4 +37,8 @@ public class Klas implements Serializable {
     public KlasDB getKlasDb() {
         return klasDB;
     }
+
+    public int getColor() {
+        return klasDB.getColor();
+    }
 }

@@ -14,7 +14,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 
     <EditText
-        android:id="@+id/clasName"
+        android:id="@+id/klasName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -29,6 +29,6 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:onClick="onCreatePressed"
-        android:text="@string/create" />
+        android:text="@string/save" />
 
 </LinearLayout>

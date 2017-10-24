@@ -19,7 +19,7 @@ import calaerts.be.attendancesheet.activities.AbstractAttendanceAppActivity;
 import calaerts.be.attendancesheet.activities.klas.KlasListViewModel;
 import calaerts.be.attendancesheet.activities.klas.detail.ClassDetailActivity;
 import calaerts.be.attendancesheet.activities.klas.detail.ClassDetailFragment;
-import calaerts.be.attendancesheet.activities.klas.newKlas.NewKlasActivity;
+import calaerts.be.attendancesheet.activities.klas.newKlas.KlasDetailActivity;
 import calaerts.be.attendancesheet.activities.klas.student.StudentDetail;
 import calaerts.be.attendancesheet.model.Klas;
 import calaerts.be.attendancesheet.model.KlasDB;
@@ -88,7 +88,7 @@ public class KlasListActivity extends AbstractAttendanceAppActivity implements K
     }
 
     private void startNewKlasActivity() {
-        Intent intent = new Intent(this, NewKlasActivity.class);
+        Intent intent = new Intent(this, KlasDetailActivity.class);
         startActivity(intent);
     }
 
@@ -103,6 +103,13 @@ public class KlasListActivity extends AbstractAttendanceAppActivity implements K
     @Override
     public void onKlasSelected(KlasDB klas) {
         klasViewModel.setSelectedKlas(klas.getId());
+    }
+
+    @Override
+    public void onKlasLongClicked(KlasDB klas) {
+        Intent intent = new Intent(this, KlasDetailActivity.class);
+        intent.putExtra("klas", klas);
+        startActivity(intent);
     }
 
     private void klasChanged(Klas klas) {
