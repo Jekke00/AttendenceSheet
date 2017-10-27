@@ -31,12 +31,9 @@ public class DaysRecyclerViewAdapter extends AbstractSelectableRecyclerViewAdapt
         super.onBindViewHolder(holder, position);
         holder.mItem = getData().get(position);
         holder.mIdView.setText(getData().get(position).toString());
-        holder.mView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (null != mListener) {
-                    mListener.onDayInteracted(holder.mItem);
-                }
+        holder.mView.setOnClickListener(v -> {
+            if (null != mListener) {
+                mListener.onDayInteracted(holder.mItem);
             }
         });
     }

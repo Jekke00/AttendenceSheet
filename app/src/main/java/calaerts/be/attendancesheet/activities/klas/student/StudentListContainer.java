@@ -1,6 +1,5 @@
 package calaerts.be.attendancesheet.activities.klas.student;
 
-import android.arch.lifecycle.Observer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -38,23 +37,13 @@ public class StudentListContainer extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        klasViewModel.getSelectedKlas().observe(this, new Observer<Klas>() {
-            @Override
-            public void onChanged(@Nullable Klas klas) {
-                onKlasUpdated(klas);
-            }
-        });
+        klasViewModel.getSelectedKlas().observe(this, this::onKlasUpdated);
         setupNewStudentButton(view);
     }
 
     private void setupNewStudentButton(View view) {
         final Button button = view.findViewById(R.id.newStudentButton);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onNewStudentClicked();
-            }
-        });
+        button.setOnClickListener(view1 -> onNewStudentClicked());
     }
 
     private void onKlasUpdated(@Nullable Klas klas) {

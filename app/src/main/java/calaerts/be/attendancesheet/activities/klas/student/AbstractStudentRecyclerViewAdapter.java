@@ -1,13 +1,12 @@
 package calaerts.be.attendancesheet.activities.klas.student;
 
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import calaerts.be.attendancesheet.model.StudentDb;
 
 public abstract class AbstractStudentRecyclerViewAdapter extends AbstractSelectableRecyclerViewAdapter<StudentDb, ModifyStudentListViewHolder> {
-    private StudentInteractionListener listener;
+    private final StudentInteractionListener listener;
 
     AbstractStudentRecyclerViewAdapter(StudentInteractionListener listener) {
         this.listener = listener;
@@ -15,12 +14,7 @@ public abstract class AbstractStudentRecyclerViewAdapter extends AbstractSelecta
 
     @Override
     public void setData(List<StudentDb> data) {
-        Collections.sort(data, new Comparator<StudentDb>() {
-            @Override
-            public int compare(StudentDb studentDb, StudentDb t1) {
-                return studentDb.getName().compareTo(t1.getName());
-            }
-        });
+        Collections.sort(data, (studentDb, t1) -> studentDb.getName().compareTo(t1.getName()));
         super.setData(data);
     }
 

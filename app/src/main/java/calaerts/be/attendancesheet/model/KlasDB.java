@@ -3,7 +3,6 @@ package calaerts.be.attendancesheet.model;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.ColorInt;
-import android.support.annotation.NonNull;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -11,14 +10,12 @@ import java.util.Objects;
 @Entity(tableName = "klas")
 public class KlasDB implements Serializable {
     @PrimaryKey(autoGenerate = true)
-    @NonNull
     private int id;
     private String name;
     private
     @ColorInt
     int color;
 
-    @NonNull
     public int getId() {
         return id;
     }

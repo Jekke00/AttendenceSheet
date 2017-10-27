@@ -24,11 +24,6 @@ public class ModifyStudentListViewHolder extends SelectableViewHolder {
 
     public void setStudent(final StudentDb student, final StudentInteractionListener studentInteractionListener) {
         this.contentView.setText(student.getName());
-        this.mainView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                studentInteractionListener.onStudentSelected(student);
-            }
-        });
+        this.mainView.setOnClickListener(view -> studentInteractionListener.onStudentSelected(student));
     }
 }

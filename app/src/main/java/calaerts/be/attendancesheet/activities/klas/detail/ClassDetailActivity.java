@@ -7,7 +7,6 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
 
 import calaerts.be.attendancesheet.R;
 import calaerts.be.attendancesheet.activities.klas.list.KlasListActivity;
@@ -39,12 +38,7 @@ public class ClassDetailActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.detail_toolbar);
         setSupportActionBar(toolbar);
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startNewKlasActivity();
-            }
-        });
+        fab.setOnClickListener(view -> startNewKlasActivity());
 
         // Show the Up button in the action bar.
         ActionBar actionBar = getSupportActionBar();

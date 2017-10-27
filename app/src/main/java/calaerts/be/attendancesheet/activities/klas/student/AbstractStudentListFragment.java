@@ -1,7 +1,6 @@
 package calaerts.be.attendancesheet.activities.klas.student;
 
 
-import android.arch.core.util.Function;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -38,6 +37,4 @@ public abstract class AbstractStudentListFragment extends Fragment implements St
         if (students != null)
             adapter.setData(students);
     }
-
-    public abstract Function<StudentInteractionListener, AbstractSelectableRecyclerViewAdapter> getAdapterFactory();
 }

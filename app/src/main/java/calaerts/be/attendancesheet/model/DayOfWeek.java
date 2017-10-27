@@ -7,13 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public enum DayOfWeek {
-    MONDAY(DateTimeConstants.MONDAY, "Maandag"),
-    TUESDAY(DateTimeConstants.TUESDAY, "Dinsdag"),
-    WEDNESDAY(DateTimeConstants.WEDNESDAY, "Woensdag"),
-    THURSDAY(DateTimeConstants.THURSDAY, "Donderdag"),
-    FRIDAY(DateTimeConstants.FRIDAY, "Vrijdag"),
-    SATURDAY(DateTimeConstants.SATURDAY, "Zaterdag"),
-    SUNDAY(DateTimeConstants.SUNDAY, "Zondag");
+    MONDAY(DateTimeConstants.MONDAY, "Monday"),
+    TUESDAY(DateTimeConstants.TUESDAY, "Tuesday"),
+    WEDNESDAY(DateTimeConstants.WEDNESDAY, "Wednesday"),
+    THURSDAY(DateTimeConstants.THURSDAY, "Thursday"),
+    FRIDAY(DateTimeConstants.FRIDAY, "Friday"),
+    SATURDAY(DateTimeConstants.SATURDAY, "Saturday"),
+    SUNDAY(DateTimeConstants.SUNDAY, "Sunday");
 
     public final int id;
     public final String value;

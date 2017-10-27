@@ -5,7 +5,6 @@ import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 import android.arch.persistence.room.TypeConverters;
-import android.support.annotation.NonNull;
 
 import calaerts.be.attendancesheet.Converters;
 
@@ -13,18 +12,16 @@ import calaerts.be.attendancesheet.Converters;
 @TypeConverters(Converters.class)
 public class Moment {
     @PrimaryKey(autoGenerate = true)
-    @NonNull
     private int id;
     private int klasId;
     private Hour hour;
     private DayOfWeek dayOfWeek;
 
-    @NonNull
     public int getId() {
         return id;
     }
 
-    public void setId(@NonNull int id) {
+    public void setId(int id) {
         this.id = id;
     }
 

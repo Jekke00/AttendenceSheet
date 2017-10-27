@@ -1,9 +1,7 @@
 package calaerts.be.attendancesheet.activities.klas.student;
 
 import android.app.Activity;
-import android.arch.lifecycle.Observer;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.view.LayoutInflater;
@@ -32,12 +30,7 @@ public class StudentDetail extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ((AttendanceApp) getActivity().getApplication()).getAppComponent().inject(this);
-        klasViewModel.selectedStudent().observe(this, new Observer<StudentDb>() {
-            @Override
-            public void onChanged(@Nullable StudentDb student) {
-                updateStudent(student);
-            }
-        });
+        klasViewModel.selectedStudent().observe(this, this::updateStudent);
     }
 
     @Override
@@ -46,12 +39,7 @@ public class StudentDetail extends Fragment {
         final View view = inflater.inflate(R.layout.fragment_student_detail, container, false);
         nameEditText = view.findViewById(R.id.studentName);
         updateStudent(klasViewModel.selectedStudent().getValue());
-        view.findViewById(R.id.saveStudentButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                saveStudent();
-            }
-        });
+        view.findViewById(R.id.saveStudentButton).setOnClickListener(view1 -> saveStudent());
         return view;
     }
 

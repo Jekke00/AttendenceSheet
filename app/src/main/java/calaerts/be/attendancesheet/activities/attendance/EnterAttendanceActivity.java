@@ -1,8 +1,6 @@
 package calaerts.be.attendancesheet.activities.attendance;
 
-import android.arch.lifecycle.Observer;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -23,19 +21,14 @@ public class EnterAttendanceActivity extends AbstractAttendanceAppActivity {
         super.onCreate(savedInstanceState);
         ((AttendanceApp) getApplication()).getAppComponent().inject(this);
         attendanceViewModel.selectDate((LocalDate) getIntent().getSerializableExtra("date"));
-        attendanceViewModel.selectedDate().observe(this, new Observer<LocalDate>() {
-            @Override
-            public void onChanged(@Nullable LocalDate date) {
-                setTitle("Attendance at: " + date.toString());
-            }
-        });
+        attendanceViewModel.selectedDate().observe(this, date -> setTitle("Attendance at: " + date.toString()));
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         final boolean ok = super.onCreateOptionsMenu(menu);
         menu.add(0, 0, 0, "Select day");
-        menu.removeItem(R.id.enterAttendence);
+        menu.removeItem(R.id.enterAttendance);
         return ok;
     }
 

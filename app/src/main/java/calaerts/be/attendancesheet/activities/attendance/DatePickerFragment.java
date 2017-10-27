@@ -3,6 +3,7 @@ package calaerts.be.attendancesheet.activities.attendance;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.widget.DatePicker;
 
@@ -33,6 +34,7 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
         ((AttendanceApp) getActivity().getApplication()).getAppComponent().inject(this);
     }
 
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         LocalDate date = (LocalDate) getArguments().getSerializable(DATE);

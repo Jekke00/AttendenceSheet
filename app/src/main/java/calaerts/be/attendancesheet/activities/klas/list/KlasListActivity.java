@@ -1,15 +1,11 @@
 package calaerts.be.attendancesheet.activities.klas.list;
 
-import android.arch.lifecycle.Observer;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
-import android.view.View;
-
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -37,24 +33,9 @@ public class KlasListActivity extends AbstractAttendanceAppActivity implements K
         super.onCreate(savedInstanceState);
         ((AttendanceApp) getApplication()).getAppComponent().inject(this);
         setupViews();
-        klasViewModel.allKlassen().observe(this, new Observer<List<KlasDB>>() {
-            @Override
-            public void onChanged(@Nullable List<KlasDB> klases) {
-                adapter.setData(klases);
-            }
-        });
-        klasViewModel.getSelectedKlas().observe(this, new Observer<Klas>() {
-            @Override
-            public void onChanged(@Nullable Klas klas) {
-                klasChanged(klas);
-            }
-        });
-        klasViewModel.selectedStudent().observe(this, new Observer<StudentDb>() {
-            @Override
-            public void onChanged(@Nullable StudentDb student) {
-                onStudentSelected(student);
-            }
-        });
+        klasViewModel.allKlassen().observe(this, klassen -> adapter.setData(klassen));
+        klasViewModel.getSelectedKlas().observe(this, this::klasChanged);
+        klasViewModel.selectedStudent().observe(this, this::onStudentSelected);
 
     }
 
@@ -79,12 +60,7 @@ public class KlasListActivity extends AbstractAttendanceAppActivity implements K
 
     private void setupActionButton() {
         FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startNewKlasActivity();
-            }
-        });
+        fab.setOnClickListener(view -> startNewKlasActivity());
     }
 
     private void startNewKlasActivity() {

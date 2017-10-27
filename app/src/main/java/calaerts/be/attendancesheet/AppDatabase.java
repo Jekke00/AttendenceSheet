@@ -35,8 +35,8 @@ public abstract class AppDatabase extends RoomDatabase {
         return INSTANCE;
     }
 
-    public static void destroyInstance() {
-        INSTANCE = null;
+    public String getLocation() {
+        return INSTANCE.mDatabase.getPath();
     }
 
     public abstract KlasDao klasDao();

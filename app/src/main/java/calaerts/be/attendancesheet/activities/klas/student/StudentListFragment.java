@@ -1,7 +1,5 @@
 package calaerts.be.attendancesheet.activities.klas.student;
 
-import android.arch.core.util.Function;
-import android.arch.lifecycle.Observer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -27,27 +25,13 @@ public class StudentListFragment extends AbstractStudentListFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        klasViewModel.getSelectedKlas().observe(this, new Observer<Klas>() {
-            @Override
-            public void onChanged(@Nullable Klas klas) {
-                onKlasUpdated(klas);
-            }
-        });
+        klasViewModel.getSelectedKlas().observe(this, this::onKlasUpdated);
     }
 
     private void onKlasUpdated(Klas klas) {
         setStudents(klas.getStudents());
     }
 
-    @Override
-    public Function<StudentInteractionListener, AbstractSelectableRecyclerViewAdapter> getAdapterFactory() {
-        return new Function<StudentInteractionListener, AbstractSelectableRecyclerViewAdapter>() {
-            @Override
-            public AbstractSelectableRecyclerViewAdapter apply(StudentInteractionListener studentInteractionListener) {
-                return new MyStudentRecyclerViewAdapter(studentInteractionListener);
-            }
-        };
-    }
 
     @Override
     public void onStudentSelected(StudentDb student) {

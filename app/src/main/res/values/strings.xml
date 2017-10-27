@@ -11,4 +11,5 @@
     <string name="title_activity_enter_attendance">EnterAttendanceActivity</string>
     <string name="save">save</string>
     <string name="change_color">Change Color</string>
+    <string name="hours">Hours</string>
 </resources>

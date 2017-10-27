@@ -29,20 +29,14 @@ public class KlasViewHolder extends SelectableViewHolder {
         this.klas = klas;
         mIdView.setText(klas.getName());
 
-        mView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (klasViewHolderListener != null) {
-                    klasViewHolderListener.onKlasSelected(klas);
-                }
+        mView.setOnClickListener(v -> {
+            if (klasViewHolderListener != null) {
+                klasViewHolderListener.onKlasSelected(klas);
             }
         });
-        mView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                klasViewHolderListener.onKlasLongClicked(klas);
-                return true;
-            }
+        mView.setOnLongClickListener(view -> {
+            klasViewHolderListener.onKlasLongClicked(klas);
+            return true;
         });
     }
 }

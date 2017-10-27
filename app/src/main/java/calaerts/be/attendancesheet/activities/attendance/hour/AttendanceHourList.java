@@ -1,14 +1,11 @@
 package calaerts.be.attendancesheet.activities.attendance.hour;
 
 import android.arch.core.util.Function;
-import android.arch.lifecycle.Observer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -34,12 +31,7 @@ public class AttendanceHourList extends AbstractHourFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = super.onCreateView(inflater, container, savedInstanceState);
-        attendanceViewModel.getUsedHours().observe(this, new Observer<List<Hour>>() {
-            @Override
-            public void onChanged(@Nullable List<Hour> hours) {
-                getAdapter().setData(hours);
-            }
-        });
+        attendanceViewModel.getUsedHours().observe(this, hours -> getAdapter().setData(hours));
         return view;
     }
 
@@ -51,11 +43,6 @@ public class AttendanceHourList extends AbstractHourFragment {
 
     @Override
     protected Function<OnHourListInteraction, ? extends AbstractHourRecyclerViewAdapter> adapterFactory() {
-        return new Function<OnHourListInteraction, AbstractHourRecyclerViewAdapter>() {
-            @Override
-            public AbstractHourRecyclerViewAdapter apply(OnHourListInteraction onHourListInteraction) {
-                return new AttendanceHourAdapter(onHourListInteraction);
-            }
-        };
+        return (Function<OnHourListInteraction, AbstractHourRecyclerViewAdapter>) AttendanceHourAdapter::new;
     }
 }

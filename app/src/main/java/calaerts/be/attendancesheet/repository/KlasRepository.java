@@ -1,6 +1,5 @@
 package calaerts.be.attendancesheet.repository;
 
-import android.arch.core.util.Function;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Transformations;
 
@@ -8,7 +7,6 @@ import java.util.List;
 
 import calaerts.be.attendancesheet.model.Klas;
 import calaerts.be.attendancesheet.model.KlasDB;
-import calaerts.be.attendancesheet.model.KlasWithStudentsAndMoments;
 
 public class KlasRepository {
     private final KlasDao klasDao;
@@ -22,11 +20,6 @@ public class KlasRepository {
     }
 
     public LiveData<Klas> getKlas(final int klasId){
-        return Transformations.map(klasDao.getKlasAggregate(klasId), new Function<KlasWithStudentsAndMoments, Klas>() {
-            @Override
-            public Klas apply(KlasWithStudentsAndMoments aggregate) {
-                return new Klas(aggregate.klas, aggregate.students, aggregate.moments);
-            }
-        });
+        return Transformations.map(klasDao.getKlasAggregate(klasId), aggregate -> new Klas(aggregate.klas, aggregate.students, aggregate.moments));
     }
 }

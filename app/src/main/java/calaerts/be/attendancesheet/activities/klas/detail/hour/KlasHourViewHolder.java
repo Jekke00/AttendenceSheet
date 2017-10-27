@@ -25,12 +25,9 @@ public class KlasHourViewHolder extends HourViewHolder {
         this.checkBox.setText(Integer.toString(hour.getHour()));
         this.checkBox.setChecked(hour.isSelected());
 
-        this.checkBox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (null != onHourListInteraction) {
-                    onHourListInteraction.onListFragmentInteraction(hour);
-                }
+        this.checkBox.setOnClickListener(v -> {
+            if (null != onHourListInteraction) {
+                onHourListInteraction.onListFragmentInteraction(hour);
             }
         });
     }

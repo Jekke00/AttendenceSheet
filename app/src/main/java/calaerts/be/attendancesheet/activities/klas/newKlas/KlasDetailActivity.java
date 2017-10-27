@@ -54,12 +54,7 @@ public class KlasDetailActivity extends AbstractAttendanceAppActivity implements
     private void initListeners() {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        findViewById(R.id.create_class).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onCreatePressed(null);
-            }
-        });
+        findViewById(R.id.create_class).setOnClickListener(view -> onCreatePressed(null));
     }
 
     public void onCreatePressed(View view) {

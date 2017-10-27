@@ -13,11 +13,11 @@ import calaerts.be.attendancesheet.Converters;
 @TypeConverters(Converters.class)
 public class MissedAttendance {
     @NonNull
-    private Integer studentId;
+    private final Integer studentId;
     @NonNull
-    private Hour hour;
+    private final Hour hour;
     @NonNull
-    private LocalDate day;
+    private final LocalDate day;
 
     public MissedAttendance(@NonNull Integer studentId, @NonNull Hour hour, @NonNull LocalDate day) {
         this.studentId = studentId;
@@ -25,15 +25,18 @@ public class MissedAttendance {
         this.day = day;
     }
 
+    @NonNull
     public Integer getStudentId() {
         return studentId;
     }
 
 
+    @NonNull
     public Hour getHour() {
         return hour;
     }
 
+    @NonNull
     public LocalDate getDay() {
         return day;
     }

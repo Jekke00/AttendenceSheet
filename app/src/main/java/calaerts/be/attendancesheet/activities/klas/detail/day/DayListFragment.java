@@ -1,6 +1,5 @@
 package calaerts.be.attendancesheet.activities.klas.detail.day;
 
-import android.arch.lifecycle.Observer;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -18,7 +17,6 @@ import javax.inject.Inject;
 import calaerts.be.attendancesheet.AttendanceApp;
 import calaerts.be.attendancesheet.R;
 import calaerts.be.attendancesheet.activities.klas.KlasListViewModel;
-import calaerts.be.attendancesheet.model.Day;
 import calaerts.be.attendancesheet.model.DayOfWeek;
 
 public class DayListFragment extends Fragment {
@@ -40,12 +38,7 @@ public class DayListFragment extends Fragment {
         Context context = view.getContext();
         RecyclerView recyclerView = (RecyclerView) view;
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        adapter = new DaysRecyclerViewAdapter(new OnListFragmentInteractionListener() {
-            @Override
-            public void onDayInteracted(DayOfWeek item) {
-                klasViewModel.selectedDay(item);
-            }
-        });
+        adapter = new DaysRecyclerViewAdapter(item -> klasViewModel.selectedDay(item));
         recyclerView.setAdapter(adapter);
         adapter.setData(Arrays.asList(DayOfWeek.values()));
         return view;
@@ -54,15 +47,12 @@ public class DayListFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        klasViewModel.selectedDay().observe(this, new Observer<Day>() {
-            @Override
-            public void onChanged(@Nullable Day day) {
-                if (day == null) {
-                    adapter.clearSelected();
-                    return;
-                }
-                adapter.setSelected(day.getDayOfWeek());
+        klasViewModel.selectedDay().observe(this, day -> {
+            if (day == null) {
+                adapter.clearSelected();
+                return;
             }
+            adapter.setSelected(day.getDayOfWeek());
         });
     }
 

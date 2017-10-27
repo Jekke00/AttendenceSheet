@@ -28,12 +28,9 @@ public class AttendanceHourViewHolder extends HourViewHolder {
     @Override
     public void setHour(final Hour hour, final OnHourListInteraction onHourListInteraction) {
         this.textView.setText(Integer.toString(hour.getHour()));
-        this.view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (null != onHourListInteraction) {
-                    onHourListInteraction.onListFragmentInteraction(hour);
-                }
+        this.view.setOnClickListener(view -> {
+            if (null != onHourListInteraction) {
+                onHourListInteraction.onListFragmentInteraction(hour);
             }
         });
     }

@@ -4,10 +4,8 @@ import android.arch.core.util.Function;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MediatorLiveData;
 import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.Transformations;
 import android.arch.lifecycle.ViewModel;
-import android.support.annotation.Nullable;
 
 import org.joda.time.LocalDate;
 
@@ -28,20 +26,16 @@ public class AttendanceViewModel extends ViewModel {
     private final MediatorLiveData<List<Student>> studentMediator = new MediatorLiveData<>();
     private final MutableLiveData<Hour> selectedHourLiveDate = new MutableLiveData<>();
     private final MutableLiveData<LocalDate> selectedDateLiveDate = new MutableLiveData<>();
+    private final Function<List<StudentWithMissedAttendances>, List<Student>> studentMapper = studentsWithMissedAttendances -> {
+        List<Student> students = new ArrayList<>();
+        for (StudentWithMissedAttendances studentWithMissedAttendance : studentsWithMissedAttendances) {
+            students.add(new Student(studentWithMissedAttendance.student, studentWithMissedAttendance.missedAttendances, studentWithMissedAttendance.color));
+        }
+        return students;
+    };
     private LiveData<List<Hour>> currentHoursLiveData;
     private LiveData<List<Student>> currentStudentLiveData;
     private LocalDate selectedDate;
-
-    private Function<List<StudentWithMissedAttendances>, List<Student>> studentMapper = new Function<List<StudentWithMissedAttendances>, List<Student>>() {
-        @Override
-        public List<Student> apply(List<StudentWithMissedAttendances> studentsWithMissedAttendances) {
-            List<Student> students = new ArrayList<>();
-            for (StudentWithMissedAttendances studentWithMissedAttendance : studentsWithMissedAttendances) {
-                students.add(new Student(studentWithMissedAttendance.student, studentWithMissedAttendance.missedAttendances, studentWithMissedAttendance.color));
-            }
-            return students;
-        }
-    };
 
     public AttendanceViewModel(StudentDao studentDao, MomentDao momentDao) {
         this.studentDao = studentDao;
@@ -57,22 +51,17 @@ public class AttendanceViewModel extends ViewModel {
         selectedDate = date;
         selectedDateLiveDate.setValue(date);
         currentHoursLiveData = momentDao.getHoursAtDay(DayOfWeek.of(date));
-        availableHourAtDayMediator.addSource(currentHoursLiveData, new Observer<List<Hour>>() {
-            @Override
-            public void onChanged(@Nullable List<Hour> hours) {
-                availableHourAtDayMediator.setValue(hours);
-            }
-        });
+        availableHourAtDayMediator.addSource(currentHoursLiveData, availableHourAtDayMediator::setValue);
     }
 
     private void clearData() {
         if (currentHoursLiveData != null) {
             availableHourAtDayMediator.removeSource(currentHoursLiveData);
-            availableHourAtDayMediator.setValue(new ArrayList<Hour>());
+            availableHourAtDayMediator.setValue(new ArrayList<>());
         }
         if (currentHoursLiveData != null) {
             studentMediator.removeSource(currentHoursLiveData);
-            studentMediator.setValue(new ArrayList<Student>());
+            studentMediator.setValue(new ArrayList<>());
         }
     }
 
@@ -97,12 +86,7 @@ public class AttendanceViewModel extends ViewModel {
     private void addStudentDataToMediator(Hour hour) {
         generateStudentLiveData(hour);
 
-        studentMediator.addSource(currentStudentLiveData, new Observer<List<Student>>() {
-            @Override
-            public void onChanged(@Nullable List<Student> students) {
-                studentMediator.setValue(students);
-            }
-        });
+        studentMediator.addSource(currentStudentLiveData, studentMediator::setValue);
     }
 
     private void generateStudentLiveData(Hour hour) {

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Klas implements Serializable {
-    private KlasDB klasDB;
+    private final KlasDB klasDB;
     private List<StudentDb> students = new ArrayList<>();
     private List<Moment> moments = new ArrayList<>();
 

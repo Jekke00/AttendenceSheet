@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="calaerts.be.attendancesheet">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:name="calaerts.be.attendancesheet.AttendanceApp"
         android:allowBackup="true"
@@ -32,11 +35,11 @@
         <activity
             android:name="calaerts.be.attendancesheet.activities.klas.newKlas.KlasDetailActivity"
             android:label="@string/title_activity_new_klas"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="calaerts.be.attendancesheet.activities.attendance.EnterAttendanceActivity"
             android:label="@string/title_activity_enter_attendance"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

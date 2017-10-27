@@ -32,12 +32,7 @@ public abstract class AbstractHourFragment extends Fragment {
 
     private void setupRecyclerView(RecyclerView recyclerView) {
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
-        adapter = adapterFactory().apply(new OnHourListInteraction() {
-            @Override
-            public void onListFragmentInteraction(Hour item) {
-                onHourClicked(item);
-            }
-        });
+        adapter = adapterFactory().apply((OnHourListInteraction) this::onHourClicked);
         recyclerView.setAdapter(getAdapter());
     }
 

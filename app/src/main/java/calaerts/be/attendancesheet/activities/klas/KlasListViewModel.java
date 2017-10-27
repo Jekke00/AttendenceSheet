@@ -1,13 +1,10 @@
 package calaerts.be.attendancesheet.activities.klas;
 
-import android.arch.core.util.Function;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MediatorLiveData;
 import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.Transformations;
 import android.arch.lifecycle.ViewModel;
-import android.support.annotation.Nullable;
 
 import java.util.List;
 
@@ -50,12 +47,7 @@ public class KlasListViewModel extends ViewModel {
             selectedKlasLiveData.removeSource(currentLiveDataOfKlas);
         this.selectedKlasId = klasId;
         this.currentLiveDataOfKlas = klasRepository.getKlas(klasId);
-        selectedKlasLiveData.addSource(currentLiveDataOfKlas, new Observer<Klas>() {
-            @Override
-            public void onChanged(@Nullable Klas klas) {
-                selectedKlasLiveData.setValue(klas);
-            }
-        });
+        selectedKlasLiveData.addSource(currentLiveDataOfKlas, selectedKlasLiveData::setValue);
     }
 
     public LiveData<StudentDb> selectedStudent() {
@@ -74,22 +66,14 @@ public class KlasListViewModel extends ViewModel {
         if (currentLiveDataOfKlas != null)
             dayMediator.removeSource(currentSelectedDayLiveData);
         final LiveData<List<Moment>> allMomentsByKlasIdAndDayOfWeek = momentDao.getAllMomentsByKlasIdAndDayOfWeek(selectedKlasId, dayOfWeek);
-        LiveData<Day> transformed = Transformations.map(allMomentsByKlasIdAndDayOfWeek, new Function<List<Moment>, Day>() {
-            @Override
-            public Day apply(List<Moment> moments) {
-                List<Hour> hours = dayOfWeek.getAvailableHours();
-                for (Moment moment : moments) {
-                    hours.get(moment.getHour().getHour() - 1).setSelected(true);
-                }
-                return new Day(dayOfWeek, hours);
+        LiveData<Day> transformed = Transformations.map(allMomentsByKlasIdAndDayOfWeek, moments -> {
+            List<Hour> hours = dayOfWeek.getAvailableHours();
+            for (Moment moment : moments) {
+                hours.get(moment.getHour().getHour() - 1).setSelected(true);
             }
+            return new Day(dayOfWeek, hours);
         });
         currentSelectedDayLiveData = transformed;
-        dayMediator.addSource(transformed, new Observer<Day>() {
-            @Override
-            public void onChanged(@Nullable Day day) {
-                dayMediator.setValue(day);
-            }
-        });
+        dayMediator.addSource(transformed, dayMediator::setValue);
     }
 }

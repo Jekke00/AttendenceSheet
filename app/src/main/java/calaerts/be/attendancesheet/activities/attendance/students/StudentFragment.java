@@ -1,6 +1,5 @@
 package calaerts.be.attendancesheet.activities.attendance.students;
 
-import android.arch.lifecycle.Observer;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -46,12 +45,7 @@ public class StudentFragment extends Fragment {
         Context context = view.getContext();
         RecyclerView recyclerView = (RecyclerView) view;
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        adapter = new StudentViewAdapter(new OnListFragmentInteractionListener() {
-            @Override
-            public void onListFragmentInteraction(Student item) {
-                onStudentSelected(item);
-            }
-        });
+        adapter = new StudentViewAdapter(this::onStudentSelected);
         recyclerView.setAdapter(adapter);
 
         return view;
@@ -71,24 +65,9 @@ public class StudentFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        attendanceViewModel.getStudents().observe(this, new Observer<List<Student>>() {
-            @Override
-            public void onChanged(@Nullable List<Student> students) {
-                onStudentsUpdates(students);
-            }
-        });
-        attendanceViewModel.selectedDate().observe(this, new Observer<LocalDate>() {
-            @Override
-            public void onChanged(@Nullable LocalDate localDate) {
-                adapter.setDate(localDate);
-            }
-        });
-        attendanceViewModel.selectedHour().observe(this, new Observer<Hour>() {
-            @Override
-            public void onChanged(@Nullable Hour hour) {
-                adapter.setCurrentHour(hour);
-            }
-        });
+        attendanceViewModel.getStudents().observe(this, this::onStudentsUpdates);
+        attendanceViewModel.selectedDate().observe(this, localDate -> adapter.setDate(localDate));
+        attendanceViewModel.selectedHour().observe(this, hour -> adapter.setCurrentHour(hour));
     }
 
     private void onStudentsUpdates(List<Student> studentList) {
