@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.Collections;
+
 import javax.inject.Inject;
 
 import calaerts.be.attendancesheet.AttendanceApp;
@@ -31,7 +33,10 @@ public class AttendanceHourList extends AbstractHourFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = super.onCreateView(inflater, container, savedInstanceState);
-        attendanceViewModel.getUsedHours().observe(this, hours -> getAdapter().setData(hours));
+        attendanceViewModel.getUsedHours().observe(this, hours -> {
+            Collections.sort(hours);
+            getAdapter().setData(hours);
+        });
         return view;
     }
 

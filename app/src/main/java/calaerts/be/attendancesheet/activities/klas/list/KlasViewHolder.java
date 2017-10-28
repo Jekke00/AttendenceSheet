@@ -8,11 +8,9 @@ import calaerts.be.attendancesheet.R;
 import calaerts.be.attendancesheet.activities.klas.detail.hour.SelectableViewHolder;
 import calaerts.be.attendancesheet.model.KlasDB;
 
-public class KlasViewHolder extends SelectableViewHolder {
+public class KlasViewHolder extends SelectableViewHolder<KlasDB> {
     private final View mView;
     private final TextView mIdView;
-
-    public KlasDB klas;
 
     public KlasViewHolder(View view) {
         super(view);
@@ -26,7 +24,7 @@ public class KlasViewHolder extends SelectableViewHolder {
     }
 
     public void setKlas(final KlasDB klas, final KlasViewHolderListener klasViewHolderListener) {
-        this.klas = klas;
+        super.setItem(klas);
         mIdView.setText(klas.getName());
 
         mView.setOnClickListener(v -> {

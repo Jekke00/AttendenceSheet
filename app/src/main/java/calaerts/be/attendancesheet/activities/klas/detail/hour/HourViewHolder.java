@@ -4,10 +4,12 @@ import android.view.View;
 
 import calaerts.be.attendancesheet.model.Hour;
 
-public abstract class HourViewHolder extends SelectableViewHolder {
+public abstract class HourViewHolder extends SelectableViewHolder<Hour> {
     public HourViewHolder(View itemView) {
         super(itemView);
     }
 
-    public abstract void setHour(Hour hour, OnHourListInteraction onHourListInteraction);
+    public void setHour(Hour hour, OnHourListInteraction onHourListInteraction) {
+        this.setItem(hour);
+    }
 }

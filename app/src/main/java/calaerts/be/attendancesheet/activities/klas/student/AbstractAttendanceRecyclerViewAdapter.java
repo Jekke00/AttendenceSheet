@@ -4,7 +4,8 @@ import android.support.v7.widget.RecyclerView;
 
 import java.util.List;
 
-public abstract class AbstractAttendanceRecyclerViewAdapter<T, VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> {
+public abstract class AbstractAttendanceRecyclerViewAdapter<T, VH extends RecyclerView.ViewHolder>
+        extends RecyclerView.Adapter<VH> {
     private List<T> data;
 
     public List<T> getData() {

@@ -7,10 +7,9 @@ import calaerts.be.attendancesheet.R;
 import calaerts.be.attendancesheet.activities.klas.detail.hour.SelectableViewHolder;
 import calaerts.be.attendancesheet.model.Student;
 
-public class StudentViewHolder extends SelectableViewHolder {
+public class StudentViewHolder extends SelectableViewHolder<Student> {
     public final View mView;
     public final CheckBox checkBox;
-    public Student mItem;
 
     public StudentViewHolder(View view) {
         super(view);
@@ -19,7 +18,14 @@ public class StudentViewHolder extends SelectableViewHolder {
     }
 
     @Override
+    public void setItem(Student Item) {
+        super.setItem(Item);
+        this.mView.setBackgroundColor(getItem().getColor());
+        this.checkBox.setText(getItem().getName());
+    }
+
+    @Override
     public void setSelected(boolean selected) {
-        checkBox.setSelected(selected);
+        checkBox.setChecked(selected);
     }
 }

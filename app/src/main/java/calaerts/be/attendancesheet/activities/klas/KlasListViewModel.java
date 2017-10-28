@@ -5,6 +5,7 @@ import android.arch.lifecycle.MediatorLiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.Transformations;
 import android.arch.lifecycle.ViewModel;
+import android.support.annotation.NonNull;
 
 import java.util.List;
 
@@ -62,7 +63,7 @@ public class KlasListViewModel extends ViewModel {
         return dayMediator;
     }
 
-    public void selectedDay(final DayOfWeek dayOfWeek) {
+    public void selectedDay(@NonNull final DayOfWeek dayOfWeek) {
         if (currentLiveDataOfKlas != null)
             dayMediator.removeSource(currentSelectedDayLiveData);
         final LiveData<List<Moment>> allMomentsByKlasIdAndDayOfWeek = momentDao.getAllMomentsByKlasIdAndDayOfWeek(selectedKlasId, dayOfWeek);

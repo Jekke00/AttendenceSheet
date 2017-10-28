@@ -28,21 +28,19 @@ public class DaysRecyclerViewAdapter extends AbstractSelectableRecyclerViewAdapt
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        super.onBindViewHolder(holder, position);
-        holder.mItem = getData().get(position);
-        holder.mIdView.setText(getData().get(position).toString());
+        holder.setItem(getData().get(position));
         holder.mView.setOnClickListener(v -> {
             if (null != mListener) {
-                mListener.onDayInteracted(holder.mItem);
+                mListener.onDayInteracted(holder.getItem());
             }
         });
+        super.onBindViewHolder(holder, position);
     }
 
-    public class ViewHolder extends SelectableViewHolder {
+    public class ViewHolder extends SelectableViewHolder<DayOfWeek> {
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public DayOfWeek mItem;
 
         public ViewHolder(View view) {
             super(view);
@@ -54,6 +52,12 @@ public class DaysRecyclerViewAdapter extends AbstractSelectableRecyclerViewAdapt
         @Override
         public void setSelected(boolean selected) {
             mView.setBackgroundColor(selected ? Color.GRAY : Color.WHITE);
+        }
+
+        @Override
+        public void setItem(DayOfWeek Item) {
+            super.setItem(Item);
+            mIdView.setText(getItem().toString());
         }
     }
 }

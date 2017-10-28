@@ -10,7 +10,8 @@ import java.util.List;
 
 import calaerts.be.attendancesheet.model.KlasDB;
 import calaerts.be.attendancesheet.model.KlasWithStudentsAndMoments;
-@Dao()
+
+@Dao
 public interface KlasDao {
     @Query("select * from klas")
     LiveData<List<KlasDB>> getAllKlas();

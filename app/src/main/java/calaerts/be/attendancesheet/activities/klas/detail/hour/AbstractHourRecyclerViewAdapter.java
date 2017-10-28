@@ -13,7 +13,8 @@ public abstract class AbstractHourRecyclerViewAdapter<VH extends HourViewHolder>
     @Override
     public void onBindViewHolder(VH holder, int position) {
         super.onBindViewHolder(holder, position);
-        holder.setHour(getData().get(position), listener);
+        final Hour hour = getData().get(position);
+        holder.setHour(hour, listener);
     }
 
 }

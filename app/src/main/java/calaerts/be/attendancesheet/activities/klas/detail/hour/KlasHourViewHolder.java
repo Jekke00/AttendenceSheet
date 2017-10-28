@@ -22,6 +22,7 @@ public class KlasHourViewHolder extends HourViewHolder {
 
     @Override
     public void setHour(final Hour hour, final OnHourListInteraction onHourListInteraction) {
+        super.setHour(hour, onHourListInteraction);
         this.checkBox.setText(Integer.toString(hour.getHour()));
         this.checkBox.setChecked(hour.isSelected());
 

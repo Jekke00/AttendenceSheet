@@ -48,7 +48,17 @@ public class Student implements Comparable<Student> {
         return getName().compareTo(student.getName());
     }
 
+    @Override
+    public int hashCode() {
+        return getName().hashCode();
+    }
+
     public int getColor() {
         return color;
+    }
+
+    @Override
+    public String toString() {
+        return student.getName();
     }
 }
