@@ -15,7 +15,7 @@ public class MyStudentRecyclerViewAdapter extends AbstractStudentRecyclerViewAda
     @Override
     public ModifyStudentListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_student, parent, false);
+                .inflate(R.layout.simple_list_content, parent, false);
         return new ModifyStudentListViewHolder(view);
     }
 

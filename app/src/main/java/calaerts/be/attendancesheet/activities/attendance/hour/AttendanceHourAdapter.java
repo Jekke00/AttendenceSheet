@@ -15,7 +15,7 @@ public class AttendanceHourAdapter extends AbstractHourRecyclerViewAdapter<Atten
 
     @Override
     public AttendanceHourViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.fragment_hour_attendance, viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.simple_list_content, viewGroup, false);
         return new AttendanceHourViewHolder(view);
     }
 }

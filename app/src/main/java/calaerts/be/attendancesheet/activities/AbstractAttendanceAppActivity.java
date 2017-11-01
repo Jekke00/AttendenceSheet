@@ -59,8 +59,6 @@ abstract public class AbstractAttendanceAppActivity extends AppCompatActivity {
             case R.id.enterAttendance:
                 toAttendanceActivity(new LocalDate());
                 return true;
-            case R.id.backupDatabase:
-                exportDB();
             default:
                 return super.onOptionsItemSelected(item);
 

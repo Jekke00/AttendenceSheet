@@ -5,7 +5,9 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:checkboxStyle">@style/checkBoxStyle</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -17,4 +19,20 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="checkBoxStyle" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="buttonTint">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="button_style" parent="Widget.AppCompat.Button">
+        <item name="backgroundTint">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/textOnPrimary</item>
+        <item name="android:layout_gravity">bottom|end</item>
+    </style>
+
+    <style name="whiteCheckBox">
+        <item name="colorAccent">@color/cardview_light_background</item>
+        <item name="android:textColor">@color/cardview_light_background</item>
+        <item name="buttonTint">@color/cardview_light_background</item>
+    </style>
 </resources>

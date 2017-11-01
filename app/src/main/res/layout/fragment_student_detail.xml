@@ -5,7 +5,6 @@
     android:orientation="vertical"
     tools:context="calaerts.be.attendancesheet.activities.klas.student.StudentDetail">
 
-
     <EditText
         android:id="@+id/studentName"
         android:layout_width="match_parent"
@@ -16,6 +15,7 @@
 
     <Button
         android:id="@+id/saveStudentButton"
+        style="@style/button_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/save" />

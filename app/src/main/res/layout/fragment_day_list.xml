@@ -8,5 +8,5 @@
     android:layout_height="match_parent"
     app:layoutManager="LinearLayoutManager"
     tools:context="calaerts.be.attendancesheet.activities.klas.detail.day.DayListFragment"
-    tools:listitem="@layout/fragment_day"
+    tools:listitem="@layout/simple_list_content"
     />

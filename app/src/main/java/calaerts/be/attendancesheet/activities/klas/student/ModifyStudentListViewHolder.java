@@ -14,12 +14,12 @@ public class ModifyStudentListViewHolder extends SelectableViewHolder<StudentDb>
     public ModifyStudentListViewHolder(View view) {
         super(view);
         mainView = view;
-        contentView = view.findViewById(R.id.content);
+        contentView = view.findViewById(R.id.id);
     }
 
     @Override
     public void setSelected(boolean selected) {
-
+        mainView.setActivated(selected);
     }
 
     public void setStudent(final StudentDb student, final StudentInteractionListener studentInteractionListener) {

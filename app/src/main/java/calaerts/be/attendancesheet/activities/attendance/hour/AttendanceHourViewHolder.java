@@ -1,6 +1,5 @@
 package calaerts.be.attendancesheet.activities.attendance.hour;
 
-import android.graphics.Color;
 import android.view.View;
 import android.widget.TextView;
 
@@ -16,14 +15,14 @@ public class AttendanceHourViewHolder extends HourViewHolder {
 
     public AttendanceHourViewHolder(View itemView) {
         super(itemView);
-        textView = itemView.findViewById(R.id.hourId);
         view = itemView;
+        textView = itemView.findViewById(R.id.id);
 
     }
 
     @Override
     public void setSelected(boolean selected) {
-        view.setBackgroundColor(selected ? Color.GRAY : Color.WHITE);
+        view.setActivated(selected);
     }
 
     @Override

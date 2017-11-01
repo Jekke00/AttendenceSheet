@@ -17,8 +17,7 @@ public class KlasRecycleViewAdapter extends AbstractSelectableRecyclerViewAdapte
 
     @Override
     public KlasViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.class_list_content, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.simple_list_content, parent, false);
         return new KlasViewHolder(view);
     }
 

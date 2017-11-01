@@ -1,6 +1,5 @@
 package calaerts.be.attendancesheet.activities.klas.detail.day;
 
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +21,7 @@ public class DaysRecyclerViewAdapter extends AbstractSelectableRecyclerViewAdapt
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_day, parent, false);
+                .inflate(R.layout.simple_list_content, parent, false);
         return new ViewHolder(view);
     }
 
@@ -40,18 +39,16 @@ public class DaysRecyclerViewAdapter extends AbstractSelectableRecyclerViewAdapt
     public class ViewHolder extends SelectableViewHolder<DayOfWeek> {
         public final View mView;
         public final TextView mIdView;
-        public final TextView mContentView;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
             mIdView = view.findViewById(R.id.id);
-            mContentView = view.findViewById(R.id.content);
         }
 
         @Override
         public void setSelected(boolean selected) {
-            mView.setBackgroundColor(selected ? Color.GRAY : Color.WHITE);
+            mView.setActivated(selected);
         }
 
         @Override

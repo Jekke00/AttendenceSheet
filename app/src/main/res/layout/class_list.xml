@@ -8,4 +8,4 @@
                                         android:layout_height="match_parent"
                                         app:layoutManager="LinearLayoutManager"
     tools:context="calaerts.be.attendancesheet.activities.klas.list.KlasListActivity"
-                                        tools:listitem="@layout/class_list_content"/>
+    tools:listitem="@layout/simple_list_content" />

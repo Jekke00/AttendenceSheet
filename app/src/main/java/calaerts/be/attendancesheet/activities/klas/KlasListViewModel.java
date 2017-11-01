@@ -22,12 +22,14 @@ import calaerts.be.attendancesheet.repository.MomentDao;
 public class KlasListViewModel extends ViewModel {
     private final KlasRepository klasRepository;
     private final MomentDao momentDao;
+
     private final MediatorLiveData<Klas> selectedKlasLiveData = new MediatorLiveData<>();
     private final MutableLiveData<StudentDb> studentLiveData = new MutableLiveData<>();
     private final MediatorLiveData<Day> dayMediator = new MediatorLiveData<>();
 
-    private LiveData<Klas> currentLiveDataOfKlas;
     private Integer selectedKlasId;
+
+    private LiveData<Klas> currentLiveDataOfKlas;
     private LiveData<Day> currentSelectedDayLiveData;
 
     public KlasListViewModel(KlasRepository klasRepository, MomentDao momentDao) {

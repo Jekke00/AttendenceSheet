@@ -11,13 +11,13 @@
         android:layout_height="0dp"
         android:layout_weight="0.9" />
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/newStudentButton"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="match_parent"
+        style="@style/button_style"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="0.1"
-        android:text="New Student" />
+        android:text="@string/new_student" />
 
 
 </LinearLayout>

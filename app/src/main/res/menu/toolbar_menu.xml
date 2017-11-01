@@ -8,8 +8,4 @@
         android:id="@+id/enterAttendance"
         android:icon="@android:drawable/ic_menu_edit"
         android:title="@string/enter_attendence" />
-    <item
-        android:id="@+id/backupDatabase"
-        android:icon="@android:drawable/ic_menu_edit"
-        android:title="Backup database" />
 </menu>

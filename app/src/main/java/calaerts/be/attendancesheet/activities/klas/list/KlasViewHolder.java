@@ -1,6 +1,5 @@
 package calaerts.be.attendancesheet.activities.klas.list;
 
-import android.graphics.Color;
 import android.view.View;
 import android.widget.TextView;
 
@@ -20,7 +19,7 @@ public class KlasViewHolder extends SelectableViewHolder<KlasDB> {
 
     @Override
     public void setSelected(boolean selected) {
-        mView.setBackgroundColor(selected ? Color.GRAY : Color.WHITE);
+        mView.setActivated(selected);
     }
 
     public void setKlas(final KlasDB klas, final KlasViewHolderListener klasViewHolderListener) {

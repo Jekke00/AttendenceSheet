@@ -15,7 +15,7 @@
         android:layout_below="@+id/toolbar"
         android:background="?attr/colorPrimary"
         android:elevation="6dp"
-        android:minHeight="?attr/actionBarSize"
+        android:minHeight="60dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         tools:ignore="UnknownIdInLayout" />
 

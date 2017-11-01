@@ -59,7 +59,7 @@ public class StudentViewAdapter extends AbstractSelectableRecyclerViewAdapter<St
     }
 
     public void setDate(LocalDate localDate) {
-        currentDate = localDate == null ? new LocalDate() : localDate;
+        currentDate = localDate != null ? localDate : new LocalDate();
         notifyDataSetChanged();
     }
 

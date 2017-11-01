@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">attendancesheet</string>
+    <string name="app_name">Attendance Sheet</string>
     <string name="title_class_detail">Class Detail</string>
     <string name="new_class">New Class</string>
     <string name="klas_name">Klas name</string>
@@ -12,4 +12,5 @@
     <string name="save">save</string>
     <string name="change_color">Change Color</string>
     <string name="hours">Hours</string>
+    <string name="new_student">New Student</string>
 </resources>
