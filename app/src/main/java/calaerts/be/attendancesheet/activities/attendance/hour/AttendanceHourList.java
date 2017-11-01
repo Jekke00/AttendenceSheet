@@ -33,6 +33,7 @@ public class AttendanceHourList extends AbstractHourFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = super.onCreateView(inflater, container, savedInstanceState);
+        attendanceViewModel.selectedHour().observe(this, hour -> getAdapter().setSelected(hour));
         attendanceViewModel.getUsedHours().observe(this, hours -> {
             Collections.sort(hours);
             getAdapter().setData(hours);
@@ -43,7 +44,6 @@ public class AttendanceHourList extends AbstractHourFragment {
     @Override
     public void onHourClicked(Hour item) {
         this.attendanceViewModel.selectHour(item);
-        this.getAdapter().setSelected(item);
     }
 
     @Override

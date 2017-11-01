@@ -17,6 +17,7 @@ import javax.inject.Inject;
 import calaerts.be.attendancesheet.AttendanceApp;
 import calaerts.be.attendancesheet.R;
 import calaerts.be.attendancesheet.activities.klas.KlasListViewModel;
+import calaerts.be.attendancesheet.model.Day;
 import calaerts.be.attendancesheet.model.DayOfWeek;
 
 public class DayListFragment extends Fragment {
@@ -54,6 +55,15 @@ public class DayListFragment extends Fragment {
             }
             adapter.setSelected(day.getDayOfWeek());
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Day value = klasViewModel.selectedDay().getValue();
+        if (value == null) {
+            adapter.clearSelected();
+        }
     }
 
     public interface OnListFragmentInteractionListener {

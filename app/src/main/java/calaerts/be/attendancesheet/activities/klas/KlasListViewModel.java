@@ -1,5 +1,6 @@
 package calaerts.be.attendancesheet.activities.klas;
 
+import android.arch.core.util.Function;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MediatorLiveData;
 import android.arch.lifecycle.MutableLiveData;
@@ -38,7 +39,15 @@ public class KlasListViewModel extends ViewModel {
     }
 
     public LiveData<List<KlasDB>> allKlassen() {
-        return klasRepository.getAllKlassen();
+        return Transformations.map(klasRepository.getAllKlassen(), new Function<List<KlasDB>, List<KlasDB>>() {
+            @Override
+            public List<KlasDB> apply(List<KlasDB> klasDBS) {
+                if (selectedKlasId == null && !klasDBS.isEmpty()) {
+                    setSelectedKlas(klasDBS.get(0).getId());
+                }
+                return klasDBS;
+            }
+        });
     }
 
     public LiveData<Klas> getSelectedKlas() {
@@ -51,6 +60,7 @@ public class KlasListViewModel extends ViewModel {
         this.selectedKlasId = klasId;
         this.currentLiveDataOfKlas = klasRepository.getKlas(klasId);
         selectedKlasLiveData.addSource(currentLiveDataOfKlas, selectedKlasLiveData::setValue);
+        selectedDay(DayOfWeek.MONDAY);
     }
 
     public LiveData<StudentDb> selectedStudent() {
@@ -68,6 +78,7 @@ public class KlasListViewModel extends ViewModel {
     public void selectedDay(@NonNull final DayOfWeek dayOfWeek) {
         if (currentLiveDataOfKlas != null)
             dayMediator.removeSource(currentSelectedDayLiveData);
+
         final LiveData<List<Moment>> allMomentsByKlasIdAndDayOfWeek = momentDao.getAllMomentsByKlasIdAndDayOfWeek(selectedKlasId, dayOfWeek);
         LiveData<Day> transformed = Transformations.map(allMomentsByKlasIdAndDayOfWeek, moments -> {
             List<Hour> hours = dayOfWeek.getAvailableHours();
